@@ -1,17 +1,18 @@
 package beans;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "raports")
-public class Raport {
+public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long userId;
-
-    private Long shopId;
+    @ManyToOne
+    private User userId;
+    @ManyToOne
+    private Shop shopId;
     private int contract;
     private int annex;
     private int businessToBusiness;
@@ -22,7 +23,25 @@ public class Raport {
     private int teleSales;
     private int displayProtection;
     private int accessories;
+    private LocalDateTime createdTime;
+    private LocalDateTime updateTime;
 
+    @PrePersist
+    public void createdTime () {
+        this.createdTime = LocalDateTime.now();
+    }
+    @PreUpdate
+    public void updateTime () {
+        this.updateTime = LocalDateTime.now();
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
 
     public Long getId() {
         return id;
@@ -32,19 +51,19 @@ public class Raport {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public Long getShopId() {
+    public Shop getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(Shop shopId) {
         this.shopId = shopId;
     }
 
