@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>coderslab.pl</groupId>
+    <groupId>pl.coderslab</groupId>
     <artifactId>reportme</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>ReportMe</name>

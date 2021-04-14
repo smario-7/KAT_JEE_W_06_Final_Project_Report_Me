@@ -1,12 +1,12 @@
-package service;
+package pl.coderslab.service;
 
-import beans.Report;
-import beans.Shop;
-import beans.User;
-import dto.ReportDto;
-import dto.ReportReadDto;
+import pl.coderslab.beans.Report;
+import pl.coderslab.dto.ReportDto;
+import pl.coderslab.beans.Shop;
+import pl.coderslab.beans.User;
+import pl.coderslab.dto.ReportReadDto;
 import org.springframework.stereotype.Service;
-import repository.ReportRepository;
+import pl.coderslab.repository.ReportRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package coderslab.pl.reportme;
+package pl.coderslab;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

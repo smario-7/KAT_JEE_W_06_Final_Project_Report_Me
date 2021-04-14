@@ -1,7 +1,7 @@
-package dto;
+package pl.coderslab.dto;
 
-import beans.Shop;
-import beans.User;
+import pl.coderslab.beans.Shop;
+import pl.coderslab.beans.User;
 
 public class ReportReadDto {
     private final User userId;

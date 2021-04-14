@@ -1,18 +1,6 @@
-package beans;
+package pl.coderslab.dto;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = "reports")
-public class Report {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
-    private User userId;
-    @ManyToOne
-    private Shop shopId;
+public class ReportDto {
     private int contract;
     private int annex;
     private int businessToBusiness;
@@ -23,49 +11,6 @@ public class Report {
     private int teleSales;
     private int displayProtection;
     private int accessories;
-    private LocalDateTime createdTime;
-    private LocalDateTime updateTime;
-
-    @PrePersist
-    public void createdTime () {
-        this.createdTime = LocalDateTime.now();
-    }
-    @PreUpdate
-    public void updateTime () {
-        this.updateTime = LocalDateTime.now();
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
-
-    public Shop getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Shop shopId) {
-        this.shopId = shopId;
-    }
 
     public int getContract() {
         return contract;

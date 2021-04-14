@@ -1,4 +1,4 @@
-package beans;
+package pl.coderslab.beans;
 
 import javax.persistence.*;
 

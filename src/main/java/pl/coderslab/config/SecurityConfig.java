@@ -1,4 +1,4 @@
-package config;
+package pl.coderslab.config;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
+@Profile("test")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 }

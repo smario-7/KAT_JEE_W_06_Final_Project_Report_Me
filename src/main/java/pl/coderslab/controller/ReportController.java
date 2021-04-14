@@ -1,14 +1,13 @@
-package controller;
+package pl.coderslab.controller;
 
-import dto.ReportDto;
-import org.springframework.lang.NonNull;
+import pl.coderslab.dto.ReportDto;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import service.ReportService;
+import pl.coderslab.service.ReportService;
 
 @Controller
 @RequestMapping("/reportform")

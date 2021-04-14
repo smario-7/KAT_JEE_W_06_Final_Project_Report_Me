@@ -1,6 +1,6 @@
-package repository;
+package pl.coderslab.repository;
 
-import beans.Report;
+import pl.coderslab.beans.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReportRepository extends JpaRepository<Report,Long> {
