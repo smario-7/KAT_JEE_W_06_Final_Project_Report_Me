@@ -5,6 +5,7 @@
     <title>Report Form</title>
 </head>
 <body>
+<%--@elvariable id="report" type="dto"--%>
 <form:form method="post" modelAttribute="report">
     <p>
         Nowe Umowy: <form:input path="contract" />
@@ -33,7 +34,6 @@
     <p>
         Akcesoria: <form:input path="accessories" />
     </p>
-
 
     <input type="submit" value="Raportuj" />
 </form:form>

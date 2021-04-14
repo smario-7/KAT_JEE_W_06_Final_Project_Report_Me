@@ -1,6 +1,7 @@
 package controller;
 
 import dto.ReportDto;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.ReportService;
 
 @Controller
-@RequestMapping("reportform")
+@RequestMapping("/reportform")
 public class ReportController {
     private final ReportService reportService;
 
@@ -21,13 +22,13 @@ public class ReportController {
     @GetMapping
     public String getReport(Model model) {
         model.addAttribute("report", new ReportDto());
-        return "resportform";
+        return "reportform";
     }
 
     @PostMapping
     @ResponseBody
-    public String postRaport(ReportDto reportDto){
-        reportService.add(reportDto);
+    public String postRaport(ReportDto report){
+        reportService.add(report);
         return reportService.findAll().toString();
     }
 }
