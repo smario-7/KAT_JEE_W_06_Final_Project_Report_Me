@@ -1,33 +1,70 @@
 package pl.coderslab.controller;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ReportDto;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import pl.coderslab.service.ReportService;
+import pl.coderslab.dto.ReportEditDto;
+
+import pl.coderslab.service.ReportMeService;
+
+import javax.validation.Valid;
+
+import java.util.Map;
+
 
 @Controller
-@RequestMapping("/reportform")
+@RequestMapping("/report")
 public class ReportController {
-    private final ReportService reportService;
+    private final ReportMeService reportMeService;
 
-    public ReportController(ReportService reportService) {
-        this.reportService = reportService;
+    public ReportController(ReportMeService reportMeService) {
+        this.reportMeService = reportMeService;
     }
 
-    @GetMapping
+    @GetMapping("/form")
     public String getReport(Model model) {
         model.addAttribute("report", new ReportDto());
-        return "reportform";
+        return "/report/formReport";
     }
 
-    @PostMapping
-    @ResponseBody
-    public String postRaport(ReportDto report){
-        reportService.add(report);
-        return reportService.findAll().toString();
+    @PostMapping("/form")
+    public String postRaport(@Valid ReportDto report, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()){
+            return "error";
+        }
+        reportMeService.add(report);
+        return "redirect:/report/view";
     }
+
+    @GetMapping("/view")
+    public ModelAndView viewReport() {
+        ModelAndView modelAndView = new ModelAndView("report/viewReport");
+
+        modelAndView.addAllObjects(Map.of("reports", reportMeService.findAll()));
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/edit", params = "id")
+    public String editRaport(@RequestParam Long id, Model model){
+        ReportEditDto reportEditDto = reportMeService.findById(id);
+        model.addAttribute("reportEditDto", reportEditDto);
+        return "report/editReport";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String saveEditReport (@Valid ReportEditDto reportEditDto, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            return "error";
+        }
+        reportMeService.update(reportEditDto);
+        return "redirect:/report/view";
+
+    }
+
+
+
+
 }

@@ -1,18 +1,10 @@
 package pl.coderslab.dto;
 
-import pl.coderslab.beans.Shop;
-import pl.coderslab.beans.User;
-
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
-public class ReportReadDto {
+public class ReportEditDto {
     private final Long id;
-    @NotNull
-    private final String userName;
-    @NotNull
-    private final String shopName;
     @Digits(integer = 2, fraction = 0)
     private final int contract;
     @Digits(integer = 2, fraction = 0)
@@ -33,13 +25,13 @@ public class ReportReadDto {
     private final int displayProtection;
     @Digits(integer = 2, fraction = 0)
     private final int accessories;
+    private LocalDateTime createdTime;
+    private final LocalDateTime updateTime;
 
-    public ReportReadDto(Long id, String userName, String shopName, int contract, int annex, int businessToBusiness,
-                         int heandset, int play360, int television, int upSaleOnTheSameDay, int teleSales,
-                         int displayProtection, int accessories) {
+    public ReportEditDto(Long id, int contract, int annex, int businessToBusiness, int heandset, int play360,
+                         int television, int upSaleOnTheSameDay, int teleSales, int displayProtection, int accessories,
+                         LocalDateTime createdTime, LocalDateTime updateTime) {
         this.id = id;
-        this.userName = userName;
-        this.shopName = shopName;
         this.contract = contract;
         this.annex = annex;
         this.businessToBusiness = businessToBusiness;
@@ -50,17 +42,16 @@ public class ReportReadDto {
         this.teleSales = teleSales;
         this.displayProtection = displayProtection;
         this.accessories = accessories;
+        this.createdTime = createdTime;
+        this.updateTime = updateTime;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
     }
 
     public Long getId() {
         return id;
-    }
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getShopName() {
-        return shopName;
     }
 
     public int getContract() {
@@ -103,21 +94,26 @@ public class ReportReadDto {
         return accessories;
     }
 
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
     @Override
     public String toString() {
-        return "Raport: { " +
-                "Użytkownik :  "  + userName +
-                ", Sklep : " + shopName +
-                ", contract : " + contract +
-                ", annex : " + annex +
-                ", businessToBusiness : " + businessToBusiness +
-                ", heandset : " + heandset +
-                ", play360 : " + play360 +
-                ", television : " + television +
-                ", upSaleOnTheSameDay : " + upSaleOnTheSameDay +
-                ", teleSales : " + teleSales +
-                ", displayProtection : " + displayProtection +
-                ", accessories : " + accessories +
+        return "ReportEditDto{" +
+                "id=" + id +
+                ", contract=" + contract +
+                ", annex=" + annex +
+                ", businessToBusiness=" + businessToBusiness +
+                ", heandset=" + heandset +
+                ", play360=" + play360 +
+                ", television=" + television +
+                ", upSaleOnTheSameDay=" + upSaleOnTheSameDay +
+                ", teleSales=" + teleSales +
+                ", displayProtection=" + displayProtection +
+                ", accessories=" + accessories +
+                ", createdTime=" + createdTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

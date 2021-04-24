@@ -8,23 +8,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Shop shopId;
+    @OneToOne
+    private Shop shop;
     private String firstName;
     private String lastName;
     private String emial;
     private String password;
 
-    public User(Long id, Shop shopId, String firstName, String lastName, String emial, String password) {
+    public User(Long id, Shop shop, String firstName, String lastName, String emial, String password) {
         this.id = id;
-        this.shopId = shopId;
+        this.shop = shop;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emial = emial;
         this.password = password;
     }
 
-    public User() {}
+    public User() {
+
+    }
 
     public Long getId() {
         return id;
@@ -34,12 +36,12 @@ public class User {
         this.id = id;
     }
 
-    public Shop getShopId() {
-        return shopId;
+    public Shop getShop() {
+        return shop;
     }
 
-    public void setShopId(Shop shopId) {
-        this.shopId = shopId;
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 
     public String getFirstName() {

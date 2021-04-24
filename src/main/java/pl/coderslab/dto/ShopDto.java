@@ -1,14 +1,16 @@
-package pl.coderslab.beans;
+package pl.coderslab.dto;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "shops")
-public class Shop {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ShopDto {
+
     private Long id;
+    @NotEmpty
     private String shopName;
+
+    public ShopDto(@NotEmpty String shopName) {
+        this.shopName = shopName;
+    }
 
     public Long getId() {
         return id;
