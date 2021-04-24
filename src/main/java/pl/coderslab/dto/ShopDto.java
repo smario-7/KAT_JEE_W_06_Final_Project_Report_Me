@@ -8,8 +8,10 @@ public class ShopDto {
     @NotEmpty
     private String shopName;
 
-    public ShopDto(@NotEmpty String shopName) {
+    public ShopDto(Long id, @NotEmpty String shopName) {
+        this.id = id;
         this.shopName = shopName;
+
     }
 
     public Long getId() {

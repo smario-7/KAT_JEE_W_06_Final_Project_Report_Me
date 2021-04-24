@@ -27,10 +27,11 @@
                 Imię : ${user.firstName}     <br>
                 Nazwisko : ${user.lastName}  <br>
                 email : ${user.email}  <br>
-
             </div>
-            <a href="/user/edit?id=${report.id}"><button type="button" class="btn btn-primary btn-sm">Edytuj</button></a>
-            <a href="/user/delete?id=${report.id}"><button type="button" class="btn btn-primary btn-sm">Usuń</button></a>
+
+<%--            <a href="/user/edit/${user.id}"><button type="button" class="btn btn-primary btn-sm">Edytuj</button></a>--%>
+<%--            <a href="/user/delete/${user.id}"><button type="button" class="btn btn-primary btn-sm">Usuń</button></a>--%>
+
         </c:forEach>
     </div>
 </div>

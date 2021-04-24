@@ -26,16 +26,21 @@ public class UserService implements UserServiceInt {
         newUser.setShop(shopRepository.findById(userDto.getShopId()).orElseThrow(EntityNotFoundException::new));
         newUser.setFirstName(userDto.getFirstName());
         newUser.setLastName(userDto.getLastName());
-        newUser.setEmial(userDto.getEmail());
+        newUser.setEmail(userDto.getEmail());
+        newUser.setPassword("none");
         userRepository.save(newUser);
     }
 
     public List<UserReadDto> findAll() {
         return userRepository.findAll()
                 .stream()
-                .map(user -> new UserReadDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmial()))
+                .map(user -> new UserReadDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail()))
                 .collect(Collectors.toList());
 
     }
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    };
+
 
 }

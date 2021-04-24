@@ -46,7 +46,6 @@ public class ReportService implements ReportMeService{
 
     public void update(ReportEditDto reportEditDto) {
         Report newReport = reportRepository.findById(reportEditDto.getId()).orElseThrow(EntityNotFoundException::new);
-//        Report newReport = new Report();
         newReport.setId(reportEditDto.getId());
         newReport.setContract(reportEditDto.getContract());
         newReport.setAnnex(reportEditDto.getAnnex());

@@ -12,15 +12,15 @@ public class User {
     private Shop shop;
     private String firstName;
     private String lastName;
-    private String emial;
+    private String email;
     private String password;
 
-    public User(Long id, Shop shop, String firstName, String lastName, String emial, String password) {
+    public User(Long id, Shop shop, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.shop = shop;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.emial = emial;
+        this.email = email;
         this.password = password;
     }
 
@@ -60,12 +60,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmial() {
-        return emial;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmial(String emial) {
-        this.emial = emial;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

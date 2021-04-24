@@ -3,10 +3,7 @@ package pl.coderslab.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ShopDto;
 import pl.coderslab.dto.UserDto;
@@ -40,6 +37,7 @@ public class UserController {
             return "error";
         }
         userServiceInt.add(user);
+//        return user.toString();
         return "redirect:/user/view";
     }
     @GetMapping("/view")
@@ -47,6 +45,12 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("user/viewUser");
         modelAndView.addAllObjects(Map.of("users", userServiceInt.findAll()));
         return modelAndView;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id){
+        userServiceInt.delete(id);
+        return "redirect:/user/view";
     }
 
     @ModelAttribute("shops")

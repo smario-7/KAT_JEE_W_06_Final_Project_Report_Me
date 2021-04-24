@@ -12,7 +12,7 @@
 </h1>
 
 <%--@elvariable id="report" type="dto"--%>
-<form:form method="post" modelAttribute="report" action="/report/formReport">
+<form:form method="post" modelAttribute="report" action="/report/form">
 
     Nowe Umowy: <form:input path="contract" />
     <form:errors path="contract" cssClass="error" />

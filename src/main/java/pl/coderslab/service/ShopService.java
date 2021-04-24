@@ -23,7 +23,7 @@ public class ShopService implements ShopServiceInt{
     public List<ShopDto> findAll() {
         return shopRepository.findAll()
                 .stream()
-                .map(shop -> new ShopDto(shop.getShopName()))
+                .map(shop -> new ShopDto(shop.getId(), shop.getShopName()))
                 .collect(Collectors.toList());
     }
 }

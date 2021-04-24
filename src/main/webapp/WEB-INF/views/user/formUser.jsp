@@ -13,7 +13,7 @@
 </h1>
 
 <%--@elvariable id="user" type="dto"--%>
-<form:form method="post" modelAttribute="user" action="/user/formUser">
+<form:form method="post" modelAttribute="user" action="/user/form">
 
     Wybierz Swój Salon : <form:select path="shopId" items="${shops}" itemLabel="shopName" itemValue="id" />
     <form:errors path="shopId" cssClass="error" />

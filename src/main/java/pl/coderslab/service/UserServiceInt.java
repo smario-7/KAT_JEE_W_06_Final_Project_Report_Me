@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserServiceInt {
     void add(UserDto userDto);
     List<UserReadDto> findAll();
+    void delete(Long id);
 }
