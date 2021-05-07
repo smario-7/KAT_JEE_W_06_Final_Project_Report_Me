@@ -10,16 +10,16 @@ public class PredictionReport {
     private Long id;
     @OneToOne
     private Report report;
-    private int contractPrediction;
-    private int annexPrediction;
-    private int businessToBusinessPrediction;;
-    private int heandsetPrediction;;
-    private int play360Prediction;;
-    private int televisionPrediction;;
-    private int upSaleOnTheSameDayPrediction;;
-    private int teleSalesPrediction;;
-    private int displayProtectionPrediction;;
-    private int accessoriesPrediction;
+    private int contract;
+    private int annex;
+    private int businessToBusiness;;
+    private int heandset;
+    private int play360;
+    private int television;
+    private int upSaleOnTheSameDay;
+    private int teleSales;
+    private int displayProtection;;
+    private int accessories;
 
     public Long getId() {
         return id;
@@ -37,83 +37,83 @@ public class PredictionReport {
         this.report = report;
     }
 
-    public int getContractPrediction() {
-        return contractPrediction;
+    public int getContract() {
+        return contract;
     }
 
-    public void setContractPrediction(int contractPrediction) {
-        this.contractPrediction = contractPrediction;
+    public void setContract(int contract) {
+        this.contract = contract;
     }
 
-    public int getAnnexPrediction() {
-        return annexPrediction;
+    public int getAnnex() {
+        return annex;
     }
 
-    public void setAnnexPrediction(int annexPrediction) {
-        this.annexPrediction = annexPrediction;
+    public void setAnnex(int annex) {
+        this.annex = annex;
     }
 
-    public int getBusinessToBusinessPrediction() {
-        return businessToBusinessPrediction;
+    public int getBusinessToBusiness() {
+        return businessToBusiness;
     }
 
-    public void setBusinessToBusinessPrediction(int businessToBusinessPrediction) {
-        this.businessToBusinessPrediction = businessToBusinessPrediction;
+    public void setBusinessToBusiness(int businessToBusiness) {
+        this.businessToBusiness = businessToBusiness;
     }
 
-    public int getHeandsetPrediction() {
-        return heandsetPrediction;
+    public int getHeandset() {
+        return heandset;
     }
 
-    public void setHeandsetPrediction(int heandsetPrediction) {
-        this.heandsetPrediction = heandsetPrediction;
+    public void setHeandset(int heandset) {
+        this.heandset = heandset;
     }
 
-    public int getPlay360Prediction() {
-        return play360Prediction;
+    public int getPlay360() {
+        return play360;
     }
 
-    public void setPlay360Prediction(int play360Prediction) {
-        this.play360Prediction = play360Prediction;
+    public void setPlay360(int play360) {
+        this.play360 = play360;
     }
 
-    public int getTelevisionPrediction() {
-        return televisionPrediction;
+    public int getTelevision() {
+        return television;
     }
 
-    public void setTelevisionPrediction(int televisionPrediction) {
-        this.televisionPrediction = televisionPrediction;
+    public void setTelevision(int television) {
+        this.television = television;
     }
 
-    public int getUpSaleOnTheSameDayPrediction() {
-        return upSaleOnTheSameDayPrediction;
+    public int getUpSaleOnTheSameDay() {
+        return upSaleOnTheSameDay;
     }
 
-    public void setUpSaleOnTheSameDayPrediction(int upSaleOnTheSameDayPrediction) {
-        this.upSaleOnTheSameDayPrediction = upSaleOnTheSameDayPrediction;
+    public void setUpSaleOnTheSameDay(int upSaleOnTheSameDay) {
+        this.upSaleOnTheSameDay = upSaleOnTheSameDay;
     }
 
-    public int getTeleSalesPrediction() {
-        return teleSalesPrediction;
+    public int getTeleSales() {
+        return teleSales;
     }
 
-    public void setTeleSalesPrediction(int teleSalesPrediction) {
-        this.teleSalesPrediction = teleSalesPrediction;
+    public void setTeleSales(int teleSales) {
+        this.teleSales = teleSales;
     }
 
-    public int getDisplayProtectionPrediction() {
-        return displayProtectionPrediction;
+    public int getDisplayProtection() {
+        return displayProtection;
     }
 
-    public void setDisplayProtectionPrediction(int displayProtectionPrediction) {
-        this.displayProtectionPrediction = displayProtectionPrediction;
+    public void setDisplayProtection(int displayProtection) {
+        this.displayProtection = displayProtection;
     }
 
-    public int getAccessoriesPrediction() {
-        return accessoriesPrediction;
+    public int getAccessories() {
+        return accessories;
     }
 
-    public void setAccessoriesPrediction(int accessoriesPrediction) {
-        this.accessoriesPrediction = accessoriesPrediction;
+    public void setAccessories(int accessories) {
+        this.accessories = accessories;
     }
 }

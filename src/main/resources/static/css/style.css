@@ -1,5 +1,24 @@
+
 .selector-for-some-widget {
     box-sizing: content-box;
+}
+.navbar {
+    padding-left: 6px !important;
+    /*position: fixed;*/
+}
+.bg-Secondary {
+    background-color: #c7b1ff;
+}
+
+.container-fluid{
+    font-family: "Helvetica Neue", sans-serif;
+}
+.nav-bottons {
+    padding: 3px;
+}
+.error {
+    color:red;
+    font-size: 0.8em;
 }
 
 #table1 {

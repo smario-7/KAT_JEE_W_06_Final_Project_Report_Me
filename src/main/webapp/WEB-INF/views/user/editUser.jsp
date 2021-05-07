@@ -33,28 +33,24 @@
 
 </div>
 <div class="container-fluid">
-    <div class="overflow-auto">
-        <div class="row lex-row flex-nowrap" id="table1">
-            <c:forEach items="${users}" var="user">
+    <form:form method="post" modelAttribute="editUser" action="/user/edit">
+        <form:hidden path="id"/>
+        Wybierz Swój Salon : <form:select path="shopId" items="${shops}" itemLabel="shopName" itemValue="id"/>
+        <form:errors path="shopId" cssClass="error"/>
+        <br>
+        Imię: <form:input path="firstName"/>
+        <form:errors path="firstName" cssClass="error"/>
+        <br>
+        Nazwisko: <form:input path="lastName"/>
+        <form:errors path="lastName" cssClass="error"/>
+        <br>
+        email: <form:input path="email"/>
+        <form:errors path="email" cssClass="error"/>
+        <br>
 
-                <div class="col-3">
-                    Imię : ${user.firstName} <br>
-                    Nazwisko : ${user.lastName} <br>
-                    email : ${user.email} <br>
+        <button class="btn btn-secondary btn-sm" type="submit">Zapisz</button>
 
-                    <div>
-                        <a href="/user/edit?id=${user.id}">
-                            <button type="button" class="btn btn-primary btn-sm">Edytuj</button>
-                        </a>
-                        <a href="/user/delete/${user.id}">
-                            <button type="button" class="btn btn-primary btn-sm">Usuń</button>
-                        </a>
-                    </div>
-
-                </div>
-            </c:forEach>
-        </div>
-    </div>
+    </form:form>
 </div>
 
 <%@ include file="../footer.jsp" %>

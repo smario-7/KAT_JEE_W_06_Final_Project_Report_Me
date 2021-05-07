@@ -1,11 +1,7 @@
 package pl.coderslab.beans;
 
-import org.hibernate.mapping.ToOne;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "reports")

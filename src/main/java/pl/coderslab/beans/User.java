@@ -14,6 +14,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String roles;
 
     public User(Long id, Shop shop, String firstName, String lastName, String email, String password) {
         this.id = id;
@@ -26,6 +27,14 @@ public class User {
 
     public User() {
 
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     public Long getId() {

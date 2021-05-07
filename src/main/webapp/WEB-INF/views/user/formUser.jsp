@@ -7,31 +7,59 @@
     <title> Nowy konstultant </title>
 </head>
 <body>
+<div class="fixed-top">
+    <%@ include file="../header.jsp" %>
 
-<h1>
-    <p>Nowy konstultant</p>
-</h1>
+    <div class="nav-bottons">
+        <div class="row">
+            <div class="col-1">
+                <a href="/report/view">
+                    <button type="button" class="btn btn-primary btn-sm">Rapory</button>
+                </a>
+            </div>
+            <div class="col-1">
+                <a href="/user/view">
+                    <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 
 <%--@elvariable id="user" type="dto"--%>
-<form:form method="post" modelAttribute="user" action="/user/form">
+<div class="container-fluid">
+    <div class="col-2">
+        <form:form method="post" modelAttribute="user" action="/user/form">
 
-    Wybierz Swój Salon : <form:select path="shopId" items="${shops}" itemLabel="shopName" itemValue="id" />
-    <form:errors path="shopId" cssClass="error" />
-    <br>
-    Imię: <form:input path="firstName" />
-    <form:errors path="firstName" cssClass="error" />
-    <br>
-    Nazwisko: <form:input path="lastName" />
-    <form:errors path="lastName" cssClass="error" />
-    <br>
-    email: <form:input path="email" />
-    <form:errors path="email" cssClass="error" />
-    <br>
+            <div class="form-group">
+                <label>Wybierz Swój Salon</label>
+                <form:select class="form-control" path="shopId" items="${shops}" itemLabel="shopName" itemValue="id"/>
+                <form:errors path="shopId" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label>Imię</label>
+                <form:input class="form-control" path="firstName"/>
+                <form:errors path="firstName" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label>Nazwisko</label>
+                <form:input class="form-control" path="lastName"/>
+                <form:errors path="lastName" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label>email</label>
+                <form:input class="form-control" path="email"/>
+                <form:errors path="email" cssClass="error"/>
+            </div>
 
-    <button class="btn btn-secondary btn-sm" type="submit">Dodaj</button>
+            <button class="btn btn-secondary btn-sm" type="submit">Dodaj</button>
 
-</form:form>
-
+        </form:form>
+    </div>
+</div>
 
 <%@ include file="../footer.jsp" %>
 </body>

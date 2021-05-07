@@ -1,36 +1,31 @@
 package pl.coderslab.dto;
 
 import javax.validation.constraints.Digits;
-import java.time.LocalDateTime;
 
 public class ReportEditDto {
-    private final Long id;
+    private Long id;
     @Digits(integer = 2, fraction = 0)
-    private final int contract;
+    private int contract;
     @Digits(integer = 2, fraction = 0)
-    private final int annex;
+    private int annex;
     @Digits(integer = 2, fraction = 0)
-    private final int businessToBusiness;
+    private int businessToBusiness;
     @Digits(integer = 2, fraction = 0)
-    private final int heandset;
+    private int heandset;
     @Digits(integer = 2, fraction = 0)
-    private final int play360;
+    private int play360;
     @Digits(integer = 2, fraction = 0)
-    private final int television;
+    private int television;
     @Digits(integer = 2, fraction = 0)
-    private final int upSaleOnTheSameDay;
+    private int upSaleOnTheSameDay;
     @Digits(integer = 2, fraction = 0)
-    private final int teleSales;
+    private int teleSales;
     @Digits(integer = 2, fraction = 0)
-    private final int displayProtection;
+    private int displayProtection;
     @Digits(integer = 2, fraction = 0)
-    private final int accessories;
-    private LocalDateTime createdTime;
-    private final LocalDateTime updateTime;
+    private int accessories;
 
-    public ReportEditDto(Long id, int contract, int annex, int businessToBusiness, int heandset, int play360,
-                         int television, int upSaleOnTheSameDay, int teleSales, int displayProtection, int accessories,
-                         LocalDateTime createdTime, LocalDateTime updateTime) {
+    public ReportEditDto(Long id, int contract, int annex, int businessToBusiness, int heandset, int play360, int television, int upSaleOnTheSameDay, int teleSales, int displayProtection, int accessories) {
         this.id = id;
         this.contract = contract;
         this.annex = annex;
@@ -42,78 +37,93 @@ public class ReportEditDto {
         this.teleSales = teleSales;
         this.displayProtection = displayProtection;
         this.accessories = accessories;
-        this.createdTime = createdTime;
-        this.updateTime = updateTime;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getContract() {
         return contract;
+    }
+
+    public void setContract(int contract) {
+        this.contract = contract;
     }
 
     public int getAnnex() {
         return annex;
     }
 
+    public void setAnnex(int annex) {
+        this.annex = annex;
+    }
+
     public int getBusinessToBusiness() {
         return businessToBusiness;
+    }
+
+    public void setBusinessToBusiness(int businessToBusiness) {
+        this.businessToBusiness = businessToBusiness;
     }
 
     public int getHeandset() {
         return heandset;
     }
 
+    public void setHeandset(int heandset) {
+        this.heandset = heandset;
+    }
+
     public int getPlay360() {
         return play360;
+    }
+
+    public void setPlay360(int play360) {
+        this.play360 = play360;
     }
 
     public int getTelevision() {
         return television;
     }
 
+    public void setTelevision(int television) {
+        this.television = television;
+    }
+
     public int getUpSaleOnTheSameDay() {
         return upSaleOnTheSameDay;
+    }
+
+    public void setUpSaleOnTheSameDay(int upSaleOnTheSameDay) {
+        this.upSaleOnTheSameDay = upSaleOnTheSameDay;
     }
 
     public int getTeleSales() {
         return teleSales;
     }
 
+    public void setTeleSales(int teleSales) {
+        this.teleSales = teleSales;
+    }
+
     public int getDisplayProtection() {
         return displayProtection;
+    }
+
+    public void setDisplayProtection(int displayProtection) {
+        this.displayProtection = displayProtection;
     }
 
     public int getAccessories() {
         return accessories;
     }
 
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "ReportEditDto{" +
-                "id=" + id +
-                ", contract=" + contract +
-                ", annex=" + annex +
-                ", businessToBusiness=" + businessToBusiness +
-                ", heandset=" + heandset +
-                ", play360=" + play360 +
-                ", television=" + television +
-                ", upSaleOnTheSameDay=" + upSaleOnTheSameDay +
-                ", teleSales=" + teleSales +
-                ", displayProtection=" + displayProtection +
-                ", accessories=" + accessories +
-                ", createdTime=" + createdTime +
-                ", updateTime=" + updateTime +
-                '}';
+    public void setAccessories(int accessories) {
+        this.accessories = accessories;
     }
 }

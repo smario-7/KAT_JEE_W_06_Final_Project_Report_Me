@@ -1,27 +1,20 @@
 package pl.coderslab.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-public class UserReadDto {
+public class UserReadPassDto {
     private final Long id;
-    @NotNull
     private final Long shopId;
-    @NotEmpty
     private final String firstName;
-    @NotEmpty
     private final String lastName;
-    @Email
     private final String email;
+    private final String password;
 
-
-    public UserReadDto(Long id, Long shopId, String firstName, String lastName, String email) {
+    public UserReadPassDto(Long id, Long shopId, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.shopId = shopId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -42,5 +35,9 @@ public class UserReadDto {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
