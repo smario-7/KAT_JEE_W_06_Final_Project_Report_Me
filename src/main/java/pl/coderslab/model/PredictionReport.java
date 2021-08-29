@@ -1,39 +1,25 @@
-package pl.coderslab.beans;
+package pl.coderslab.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reports")
-public class Report {
+@Table(name= "prediction_report")
+public class PredictionReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private User user;
     @OneToOne
-    private Shop shop;
+    private Report report;
     private int contract;
     private int annex;
-    private int businessToBusiness;
+    private int businessToBusiness;;
     private int heandset;
     private int play360;
     private int television;
     private int upSaleOnTheSameDay;
     private int teleSales;
-    private int displayProtection;
+    private int displayProtection;;
     private int accessories;
-    private LocalDateTime createdTime;
-    private LocalDateTime updateTime;
-
-    @PrePersist
-    public void createdTime () {
-        this.createdTime = LocalDateTime.now();
-    }
-    @PreUpdate
-    public void updateTime () {
-        this.updateTime = LocalDateTime.now();
-    }
 
     public Long getId() {
         return id;
@@ -43,20 +29,12 @@ public class Report {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Report getReport() {
+        return report;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
+    public void setReport(Report report) {
+        this.report = report;
     }
 
     public int getContract() {
@@ -137,21 +115,5 @@ public class Report {
 
     public void setAccessories(int accessories) {
         this.accessories = accessories;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 }

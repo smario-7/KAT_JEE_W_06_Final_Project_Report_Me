@@ -1,10 +1,6 @@
 package pl.coderslab.dto;
 
-import pl.coderslab.beans.Shop;
-import pl.coderslab.beans.User;
-
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class ReportReadDto {

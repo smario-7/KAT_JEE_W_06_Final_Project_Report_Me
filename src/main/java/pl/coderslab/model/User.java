@@ -1,4 +1,4 @@
-package pl.coderslab.beans;
+package pl.coderslab.model;
 
 import javax.persistence.*;
 

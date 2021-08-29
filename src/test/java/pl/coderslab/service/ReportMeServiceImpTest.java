@@ -3,7 +3,7 @@ package pl.coderslab.service;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import pl.coderslab.beans.Report;
+import pl.coderslab.model.Report;
 import pl.coderslab.dto.ReportDto;
 import pl.coderslab.repository.ReportRepository;
 import pl.coderslab.repository.ShopRepository;

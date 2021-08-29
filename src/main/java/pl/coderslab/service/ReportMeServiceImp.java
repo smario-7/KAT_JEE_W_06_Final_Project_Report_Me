@@ -1,6 +1,6 @@
 package pl.coderslab.service;
 
-import pl.coderslab.beans.Report;
+import pl.coderslab.model.Report;
 import pl.coderslab.dto.ReportDto;
 import pl.coderslab.dto.ReportEditDto;
 import pl.coderslab.dto.ReportReadDto;

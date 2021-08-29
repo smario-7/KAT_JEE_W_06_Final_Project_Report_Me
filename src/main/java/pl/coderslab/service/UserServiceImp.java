@@ -1,12 +1,10 @@
 package pl.coderslab.service;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.coderslab.beans.User;
+import pl.coderslab.model.User;
 import pl.coderslab.dto.UserDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.dto.UserReadPassDto;
@@ -15,7 +13,6 @@ import pl.coderslab.repository.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

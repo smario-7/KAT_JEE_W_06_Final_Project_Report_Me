@@ -25,25 +25,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userService = userService;
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-    public UserDetailsService userDetailsService(){
-        return InMemoryUserDetailsManager(userService.loadUserByUsername());
-    }
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
+//    public UserDetailsService userDetailsService(){
+//        return InMemoryUserDetailsManager(userService.loadUserByUsername());
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        userService.loadUserByUsername()
         http.authorizeRequests()
-                .antMatchers("")
+                .antMatchers("/user/**").hasRole("ADMIN")
+                .and().formLogin().permitAll()
+                ;
     }
 
-    //    @Bean
-//    public UserDetailsService userDetailsService(){
-//        UserDetails userDetails = User.withDefaultPasswordEncoder()
-//                .username(userServiceInt.fi)
-//
-//    }
+
 }
