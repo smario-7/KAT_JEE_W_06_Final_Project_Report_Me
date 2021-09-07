@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/view">
+                <a href="/reportUser/view">
                     <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
                 </a>
             </div>

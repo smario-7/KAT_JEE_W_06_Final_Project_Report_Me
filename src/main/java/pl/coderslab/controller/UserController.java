@@ -25,6 +25,16 @@ public class UserController {
         this.userService = userService;
         this.shopService = shopService;
     }
+    @RequestMapping("/createuser")
+    public String createUser(){
+        UserDto user = new UserDto();
+        user.setEmail("admin@admin.pl");
+        user.setPassword("admin");
+        userService.add(user);
+        return "login";
+    }
+
+
 
     @GetMapping("/form")
     public String getUser(Model model) {

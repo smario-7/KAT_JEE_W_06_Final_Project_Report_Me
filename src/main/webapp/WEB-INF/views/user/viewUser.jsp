@@ -18,12 +18,12 @@
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/view">
+                <a href="/reportUser/view">
                     <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/form">
+                <a href="/reportUser/form">
                     <button type="button" class="btn btn-secondary btn-sm">Nowa Osoba</button>
                 </a>
             </div>
@@ -35,18 +35,18 @@
 <div class="container-fluid">
     <div class="overflow-auto">
         <div class="row lex-row flex-nowrap" id="table1">
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${users}" var="reportUser">
 
                 <div class="col-3">
-                    Imię : ${user.firstName} <br>
-                    Nazwisko : ${user.lastName} <br>
-                    email : ${user.email} <br>
+                    Imię : ${reportUser.firstName} <br>
+                    Nazwisko : ${reportUser.lastName} <br>
+                    email : ${reportUser.email} <br>
 
                     <div>
-                        <a href="/user/edit?id=${user.id}">
+                        <a href="/reportUser/edit?id=${reportUser.id}">
                             <button type="button" class="btn btn-primary btn-sm">Edytuj</button>
                         </a>
-                        <a href="/user/delete/${user.id}">
+                        <a href="/reportUser/delete/${reportUser.id}">
                             <button type="button" class="btn btn-primary btn-sm">Usuń</button>
                         </a>
                     </div>

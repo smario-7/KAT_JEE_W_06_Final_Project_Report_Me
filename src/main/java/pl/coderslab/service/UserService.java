@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import pl.coderslab.dto.UserDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.dto.UserReadPassDto;
+import pl.coderslab.model.ReportUser;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ public interface UserService extends UserDetailsService {
     void delete(Long id);
     UserReadDto findById(Long id);
     void update(UserReadDto userReadDto);
-    UserReadPassDto findByEmail(String email);
+    ReportUser findByEmail(String email);
 }

@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/view">
+                <a href="/reportUser/view">
                     <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
                 </a>
             </div>
@@ -29,10 +29,10 @@
 </div>
 
 
-<%--@elvariable id="user" type="dto"--%>
+<%--@elvariable id="reportUser" type="dto"--%>
 <div class="container-fluid">
     <div class="col-2">
-        <form:form method="post" modelAttribute="user" action="/user/form">
+        <form:form method="post" modelAttribute="reportUser" action="/reportUser/form">
 
             <div class="form-group">
                 <label>Wybierz Swój Salon</label>

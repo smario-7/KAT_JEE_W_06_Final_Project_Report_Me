@@ -18,12 +18,12 @@
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/view">
+                <a href="/reportUser/view">
                     <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
                 </a>
             </div>
             <div class="col-1">
-                <a href="/user/form">
+                <a href="/reportUser/form">
                     <button type="button" class="btn btn-secondary btn-sm">Nowa Osoba</button>
                 </a>
             </div>
@@ -33,7 +33,7 @@
 
 </div>
 <div class="container-fluid">
-    <form:form method="post" modelAttribute="editUser" action="/user/edit">
+    <form:form method="post" modelAttribute="editUser" action="/reportUser/edit">
         <form:hidden path="id"/>
         Wybierz Swój Salon : <form:select path="shopId" items="${shops}" itemLabel="shopName" itemValue="id"/>
         <form:errors path="shopId" cssClass="error"/>
