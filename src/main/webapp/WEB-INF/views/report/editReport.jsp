@@ -3,12 +3,12 @@
 
 <html>
 <head>
-    <%@ include file="../head.jsp" %>
+    <%@ include file="../includesJSP/head.jsp" %>
     <title>Report Edit</title>
 </head>
 <body>
 <div class="fixed-top">
-    <%@ include file="../header.jsp" %>
+    <%@ include file="../includesJSP/header.jsp" %>
 
     <div class="nav-bottons">
         <div class="row">
@@ -72,6 +72,6 @@
     </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../includesJSP/footer.jsp" %>
 </body>
 </html>

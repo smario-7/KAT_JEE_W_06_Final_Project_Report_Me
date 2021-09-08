@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%@ include file="head.jsp" %>
+    <%@ include file="includesJSP/head.jsp" %>
     <title>Report Views</title>
 </head>
 <body>
 
 <div class="fixed-top">
-    <%@ include file="header.jsp" %>
+    <%@ include file="includesJSP/header.jsp" %>
 
 </div>
 <div class="container">
@@ -17,7 +17,7 @@
     Logowanie
     </div>
     <div class="row justify-content-center">
-    <form>
+    <form method="post">
         <div class="mb-3">
             <label class="form-label">Login</label>
             <input type="email" name="email" placeholder="email"/>
@@ -32,6 +32,6 @@
     </div>
 </div>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="includesJSP/footer.jsp" %>
 </body>
 </html>

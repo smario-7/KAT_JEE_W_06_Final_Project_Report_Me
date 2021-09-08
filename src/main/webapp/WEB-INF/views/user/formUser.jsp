@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%@ include file="../head.jsp" %>
+    <%@ include file="../includesJSP/head.jsp" %>
     <title> Nowy konstultant </title>
 </head>
 <body>
 <div class="fixed-top">
-    <%@ include file="../header.jsp" %>
+    <%@ include file="../includesJSP/headerUser.jsp" %>
 
     <div class="nav-bottons">
         <div class="row">
@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="col-1">
-                <a href="/reportUser/view">
+                <a href="/report/view">
                     <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
                 </a>
             </div>
@@ -61,6 +61,6 @@
     </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../includesJSP/footer.jsp" %>
 </body>
 </html>

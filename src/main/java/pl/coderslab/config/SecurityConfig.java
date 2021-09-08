@@ -13,11 +13,11 @@ import pl.coderslab.service.SpringDataUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-   @Autowired
-   AuthenticationSuccessHandler successHandler;
+    @Autowired
+    AuthenticationSuccessHandler successHandler;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
     @Bean
@@ -27,10 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/report/**").hasRole("ADMIN")
-                .and().formLogin()
+        http
+                .userDetailsService(customUserDetailsService())
+                .authorizeRequests()
+                .antMatchers("/report/**", "/user/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/login", "/css/**", "/js/**").permitAll()
+                .and().formLogin().usernameParameter("email")
                 .loginPage("/login")
+                .successHandler(successHandler)
                 ;
     }
 

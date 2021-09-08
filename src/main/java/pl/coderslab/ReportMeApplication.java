@@ -29,5 +29,7 @@ public class ReportMeApplication {
         localValidatorFactoryBean.setValidationMessageSource(messageSource());
         return localValidatorFactoryBean;
     }
+
+
 }
 

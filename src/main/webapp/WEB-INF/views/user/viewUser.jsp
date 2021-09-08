@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%@ include file="../head.jsp" %>
+    <%@ include file="../includesJSP/head.jsp" %>
     <title>Konsultanci</title>
 </head>
 <body>
 <div class="fixed-top">
-    <%@ include file="../header.jsp" %>
+    <%@ include file="../includesJSP/headerUser.jsp" %>
 
     <div class="nav-bottons">
         <div class="row">
@@ -57,6 +57,6 @@
     </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../includesJSP/footer.jsp" %>
 </body>
 </html>

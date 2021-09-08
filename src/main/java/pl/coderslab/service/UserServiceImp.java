@@ -2,6 +2,7 @@ package pl.coderslab.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.dto.UserDto;
 import pl.coderslab.dto.UserReadDto;
@@ -21,11 +22,13 @@ public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
     private final ShopRepository shopRepository;
     private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImp(UserRepository userRepository, ShopRepository shopRepository, RoleRepository roleRepository) {
+    public UserServiceImp(UserRepository userRepository, ShopRepository shopRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.shopRepository = shopRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public ReportUser findByEmail(String email) {
@@ -38,7 +41,7 @@ public class UserServiceImp implements UserService {
         newReportUser.setFirstName(userDto.getFirstName());
         newReportUser.setLastName(userDto.getLastName());
         newReportUser.setEmail(userDto.getEmail());
-        newReportUser.setPassword("none");
+        newReportUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         newReportUser.enable();
         Role roles = roleRepository.findByName("ROLE_USER");
         newReportUser.addRole(roles);

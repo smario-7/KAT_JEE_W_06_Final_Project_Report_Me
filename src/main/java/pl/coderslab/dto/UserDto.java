@@ -1,19 +1,18 @@
 package pl.coderslab.dto;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class UserDto {
-    @NotNull
+
     private Long shopId;
-    @NotEmpty
+
     private String firstName;
-    @NotEmpty
+
     private String lastName;
     @Email
     private String email;
-
+    @NotNull
     private String password;
 
 
