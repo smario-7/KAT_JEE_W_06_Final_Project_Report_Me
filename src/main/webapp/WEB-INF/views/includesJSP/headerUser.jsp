@@ -1,25 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-Secondary ">
+<nav class="navbar fixed-top navbar-expand navbar-light bg-Secondary">
+<div class="row">
+
     <a class="navbar-brand" href="/report/view">Report Me</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse d-flex align-content-between" id="navbarSupportedContent">
+
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/report/view">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item active align-content-lg-end font-weight-bold">
                 <a class="nav-link">${headername}</a>
             </li>
         </ul>
-        <div>
-            <div class="d-flex">
-                <button class="btn btn-outline-dark btn-sm" href="/logout">Wyloguj</button>
+
+        <div class="d-flex align-content-end">
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Wyloguj</button>
             </div>
-        </ul>
+        </div>
 
     </div>
+
+</div>
 </nav>
+
+<!--Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Wyloguj</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Czy jesteś pewny ?
+            </div>
+            <div class="modal-footer">
+                <form action="<c:url value="/logout"/>" method="post">
+                    <button class="btn btn-primary small" type="submit">Tak</button>
+                    <button class="btn btn-secondary small" type="button"data-dismiss="modal">Nie</button>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 

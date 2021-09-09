@@ -5,9 +5,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/report/view">Home <span class="sr-only">(current)</span></a>
-            </li>
+
             <li class="nav-item active align-content-lg-end font-weight-bold">
                 <a class="nav-link">${headername}</a>
             </li>

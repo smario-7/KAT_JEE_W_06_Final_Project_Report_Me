@@ -3,8 +3,13 @@
     box-sizing: content-box;
 }
 .navbar {
-    padding-left: 6px !important;
+    margin-bottom: 0;
+    padding: 6px !important;
+    height: 50px;
     /*position: fixed;*/
+}
+.container-fluid{
+    padding: 3px !important;
 }
 .bg-Secondary {
     background-color: #c7b1ff;
