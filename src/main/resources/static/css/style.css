@@ -6,6 +6,7 @@
     margin-bottom: 0;
     padding: 6px !important;
     height: 50px;
+    z-index: 5000;
     /*position: fixed;*/
 }
 .container-fluid{
@@ -26,7 +27,11 @@
     font-size: 0.8em;
 }
 
-#table1 {
-
+.report-table-sm {
+    font-size: smaller;
+    background-color: #e9ecef;
+}
+.data-print {
+    background-color: #e9ecef;
 }
 

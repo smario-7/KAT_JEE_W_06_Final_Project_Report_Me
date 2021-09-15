@@ -7,8 +7,8 @@
     <title>Konsultanci</title>
 </head>
 <body>
+<%@ include file="../includesJSP/headerUser.jsp" %>
 <div class="fixed-top">
-    <%@ include file="../includesJSP/headerUser.jsp" %>
 
     <div class="nav-bottons">
         <div class="row">

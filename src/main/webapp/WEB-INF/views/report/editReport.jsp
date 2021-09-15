@@ -7,25 +7,22 @@
     <title>Report Edit</title>
 </head>
 <body>
-<div class="fixed-top">
-    <%@ include file="../includesJSP/header.jsp" %>
+<%@ include file="../includesJSP/headerUser.jsp" %>
+<div class="container-fluid">
+    <nav class="col">
 
-    <div class="nav-bottons">
-        <div class="row">
-            <div class="col-1">
-                <a href="/report/view">
-                    <button type="button" class="btn btn-primary btn-sm">Rapory</button>
-                </a>
-            </div>
-            <div class="col-1">
-                <a href="/reportUser/view">
-                    <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
-                </a>
-            </div>
+        <div class="nav-bottons">
+            <div class="row">
+                <div class="col-1">
+                    <a href="/report/view">
+                        <button type="button" class="btn btn-primary btn-sm">Raporty</button>
+                    </a>
+                </div>
 
+
+            </div>
         </div>
-    </div>
-
+    </nav>
 </div>
 
 <%--@elvariable id="reportEditDto" type="dto"--%>

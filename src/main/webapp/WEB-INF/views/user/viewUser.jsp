@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <%@ include file="../includesJSP/headerUser.jsp" %>
+<%@ include file="../includesJSP/headerUser.jsp" %>
 
+<div class="container-fluid">
 
     <nav class="col">
 
@@ -18,12 +18,7 @@
             <div class="row">
                 <div class="col-1">
                     <a href="/report/view">
-                        <button type="button" class="btn btn-primary btn-sm">Rapory</button>
-                    </a>
-                </div>
-                <div class="col-1">
-                    <a href="/reportUser/view">
-                        <button type="button" class="btn btn-secondary btn-sm">Użytkownicy</button>
+                        <button type="button" class="btn btn-primary btn-sm">Raporty</button>
                     </a>
                 </div>
                 <div class="col-1">
