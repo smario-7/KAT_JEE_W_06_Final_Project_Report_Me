@@ -32,8 +32,8 @@
 
     </nav>
     <div class="container-fluid">
-        <div class="overflow-auto">
-            <div class="row lex-row flex-nowrap" id="table1">
+        <div class="row justify-content-start">
+
                 <c:forEach items="${users}" var="reportUser">
 
                     <div class="col-3">

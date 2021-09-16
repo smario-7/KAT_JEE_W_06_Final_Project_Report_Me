@@ -1,5 +1,8 @@
 package pl.coderslab.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ShopDto;
 import pl.coderslab.dto.UserDto;
 import pl.coderslab.dto.UserReadDto;
+import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ShopService;
 import pl.coderslab.service.UserService;
 
@@ -25,6 +29,7 @@ public class UserController {
         this.userService = userService;
         this.shopService = shopService;
     }
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
     // add first user
 //    @RequestMapping("/createuser")
@@ -38,7 +43,6 @@ public class UserController {
 //    }
 
 
-
     @GetMapping("/form")
     public String getUser(Model model) {
         model.addAttribute("user", new UserDto());
@@ -46,8 +50,8 @@ public class UserController {
     }
 
     @PostMapping("/form")
-    public String addUser(@ModelAttribute("user") @Valid UserDto user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public String addUser(@ModelAttribute("user") @Valid UserDto user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "/user/formUser";
         }
         userService.add(user);
@@ -55,21 +59,22 @@ public class UserController {
     }
 
     @GetMapping("/view")
-    public ModelAndView viewAllUser(){
+    public ModelAndView viewAllUser() {
         ModelAndView modelAndView = new ModelAndView("user/viewUser");
         modelAndView.addAllObjects(Map.of("users", userService.findAll()));
         return modelAndView;
     }
 
     @GetMapping(value = "/edit", params = "id")
-    public String editUser(@RequestParam Long id, Model model){
+    public String editUser(@RequestParam Long id, Model model) {
         UserReadDto userReadDto = userService.findById(id);
         model.addAttribute("editUser", userReadDto);
         return "user/editUser";
     }
+
     @PostMapping("/edit")
-    public String edutUserPost (@ModelAttribute("editUser") @Valid UserReadDto userReadDto, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String edutUserPost(@ModelAttribute("editUser") @Valid UserReadDto userReadDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "user/editUser";
         }
         userService.update(userReadDto);
@@ -77,19 +82,25 @@ public class UserController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/user/view";
     }
 
     @ModelAttribute("shops")
-    public Collection<ShopDto> shops(){
+    public Collection<ShopDto> shops() {
         return shopService.findAll();
     }
 
     @ModelAttribute("headername")
-    public String headerName(){
+    public String headerName() {
         return "Użytkownik";
     }
+
+    @ModelAttribute("basicUserData")
+    public String[] basicUserData(@AuthenticationPrincipal CurrentUser currentUser) {
+        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName()};
+    }
+
 }
 

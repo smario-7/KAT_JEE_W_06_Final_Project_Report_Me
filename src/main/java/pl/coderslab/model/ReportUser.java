@@ -24,22 +24,10 @@ public class ReportUser {
     private String password;
     private boolean enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role" , joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id") )
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public ReportUser(Long id, Shop shop, String firstName, String lastName, String email, String password) {
-        this.id = id;
-        this.shop = shop;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
-
-    public ReportUser() {
-
-    }
 
     public Set<Role> getRoles() {
         return roles;
@@ -93,10 +81,6 @@ public class ReportUser {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -105,11 +89,16 @@ public class ReportUser {
         this.password = password;
     }
 
-    public void enable(){
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
+    public void enable() {
         setEnabled(true);
     }
 
-    public void addRole(Role role){
+    public void addRole(Role role) {
         Objects.requireNonNull(role);
         this.roles.add(role);
     }

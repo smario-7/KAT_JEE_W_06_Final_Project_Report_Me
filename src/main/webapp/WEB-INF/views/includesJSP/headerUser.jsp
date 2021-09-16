@@ -15,6 +15,9 @@
             </ul>
 
             <div class="d-flex justify-content-center">
+                <div class="col">
+                   <h6>${basicUserData[1]} (${basicUserData[0]})</h6>
+                </div>
                 <div class="dropdown">
                     <a class="btn btn-outline-dark btn-sm dropdown-toggle" href="#" id="navbarMenu" data-toggle="dropdown" role="b" aria-haspopup="true" aria-expanded="true">
                         Opcje

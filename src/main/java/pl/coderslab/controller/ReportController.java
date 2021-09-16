@@ -1,17 +1,17 @@
 package pl.coderslab.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ReportDto;
-import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
 import pl.coderslab.dto.ReportEditDto;
-
+import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ReportMeService;
 
 import javax.validation.Valid;
-
 import java.util.Map;
 
 
@@ -67,5 +67,11 @@ public class ReportController {
     public String headerName(){
         return "Raporty";
     }
+
+    @ModelAttribute("basicUserData")
+    public String[] basicUserData(@AuthenticationPrincipal CurrentUser currentUser) {
+        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName()};
+    }
+
 
 }
