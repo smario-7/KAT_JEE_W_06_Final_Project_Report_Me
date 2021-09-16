@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ShopDto;
-import pl.coderslab.dto.UserDto;
+import pl.coderslab.dto.UserAddDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ShopService;
@@ -17,6 +17,7 @@ import pl.coderslab.service.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -45,12 +46,12 @@ public class UserController {
 
     @GetMapping("/form")
     public String getUser(Model model) {
-        model.addAttribute("user", new UserDto());
+        model.addAttribute("user", new UserAddDto());
         return "/user/formUser";
     }
 
     @PostMapping("/form")
-    public String addUser(@ModelAttribute("user") @Valid UserDto user, BindingResult bindingResult) {
+    public String addUser(@ModelAttribute("user") @Valid UserAddDto user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/user/formUser";
         }
@@ -59,9 +60,12 @@ public class UserController {
     }
 
     @GetMapping("/view")
-    public ModelAndView viewAllUser() {
+    public ModelAndView viewAllUser(@AuthenticationPrincipal CurrentUser currentUser) {
         ModelAndView modelAndView = new ModelAndView("user/viewUser");
         modelAndView.addAllObjects(Map.of("users", userService.findAll()));
+        List<UserReadDto> userList = userService.findAll();
+        System.out.println();
+        System.out.println(userList.toString());
         return modelAndView;
     }
 

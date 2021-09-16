@@ -21,4 +21,10 @@ public class ShopServiceImp implements ShopService {
                 .map(shop -> new ShopDto(shop.getId(), shop.getShopName()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ShopDto> findAllNext() {
+        return shopRepository.findAllByIdAfter(1L);
+
+    }
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@ include file="includesJSP/head.jsp" %>
-    <title>Report Views</title>
+    <title>Logowanie</title>
 </head>
 <body>
 

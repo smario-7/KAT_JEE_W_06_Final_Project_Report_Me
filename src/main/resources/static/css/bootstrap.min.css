@@ -3875,7 +3875,7 @@ tbody.collapse.show {
 
 .navbar {
     position: static;
-    /*z-index: 1;*/
+    /*z-index: 0;*/
     /*width: 100%;*/
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3889,6 +3889,7 @@ tbody.collapse.show {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: .5rem 1rem
+
 
 }
 
@@ -7432,7 +7433,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
     top: 0;
     right: 0;
     left: 0;
-    /*z-index: 1030*/
+    z-index: 1030
 }
 
 .fixed-bottom {

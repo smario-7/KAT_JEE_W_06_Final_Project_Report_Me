@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.coderslab.dto.UserDto;
+import pl.coderslab.dto.UserAddDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.model.ReportUser;
 import pl.coderslab.model.Role;
@@ -35,13 +35,13 @@ public class UserServiceImp implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    public void add(UserDto userDto) {
+    public void add(UserAddDto userAddDto) {
         ReportUser newReportUser = new ReportUser();
-        newReportUser.setShop(shopRepository.findById(userDto.getShopId()).orElseThrow(EntityNotFoundException::new));
-        newReportUser.setFirstName(userDto.getFirstName());
-        newReportUser.setLastName(userDto.getLastName());
-        newReportUser.setEmail(userDto.getEmail());
-        newReportUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        newReportUser.setShop(shopRepository.findById(userAddDto.getShop().getId()).orElseThrow(EntityNotFoundException::new));
+        newReportUser.setFirstName(userAddDto.getFirstName());
+        newReportUser.setLastName(userAddDto.getLastName());
+        newReportUser.setEmail(userAddDto.getEmail());
+        newReportUser.setPassword(passwordEncoder.encode(userAddDto.getPassword()));
         newReportUser.enable();
         Role roles = roleRepository.findByName("ROLE_USER");
         newReportUser.addRole(roles);
@@ -74,6 +74,14 @@ public class UserServiceImp implements UserService {
     public void delete(Long id){
         userRepository.deleteById(id);
     };
+
+    public boolean passwordConfirm(UserAddDto userAddDto){
+        return userAddDto.getPassword().equals(userAddDto.getPasswordRepeat());
+    }
+
+    public boolean userExist (UserAddDto userAddDto){
+        return userRepository.existsByEmail(userAddDto.getEmail());
+    }
 
 //    public UserReadPassDto findByEmail(String email){
 //        ReportUser reportUser = userRepository.findByEmail(email);

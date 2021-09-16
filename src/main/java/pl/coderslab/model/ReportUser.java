@@ -93,7 +93,6 @@ public class ReportUser {
         this.enabled = enabled;
     }
 
-
     public void enable() {
         setEnabled(true);
     }

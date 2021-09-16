@@ -1,28 +1,28 @@
 package pl.coderslab.dto;
 
+import pl.coderslab.model.Shop;
+
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class UserDto {
+public class UserAddDto {
 
-    private Long shopId;
-
+    @NotBlank (message = "puste pole")
     private String firstName;
-
+    @NotBlank (message = "puste pole")
     private String lastName;
-    @Email
-    private String email;
     @NotNull
+    private Shop shop;
+    @Email (message = "błędny format")
+    @NotBlank (message = "puste pole")
+    private String email;
+    @Size(min = 6, message = "za krótkie min. 6 znaków")
+    @NotBlank(message = "puste pole")
     private String password;
-
-
-    public Long getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
+    @NotBlank
+    private String passwordRepeat;
 
     public String getFirstName() {
         return firstName;
@@ -54,5 +54,21 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordRepeat() {
+        return passwordRepeat;
+    }
+
+    public void setPasswordRepeat(String passwordRepeat) {
+        this.passwordRepeat = passwordRepeat;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

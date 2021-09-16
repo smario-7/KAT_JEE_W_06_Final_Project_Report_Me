@@ -27,6 +27,8 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")){
                 redirectUrl = "/admin";
+            } else if (grantedAuthority.getAuthority().equals("ROLE_START")){
+                redirectUrl = "/newUser";
             }
         }
         if (redirectUrl == null){

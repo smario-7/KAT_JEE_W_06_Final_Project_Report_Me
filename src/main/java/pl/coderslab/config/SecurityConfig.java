@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(customUserDetailsService())
                 .authorizeRequests()
                 .antMatchers("/report/**", "/user/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("newUser").hasRole("START")
                 .antMatchers("/login", "/css/**", "/js/**").permitAll()
                 .and().formLogin().usernameParameter("email")
                 .loginPage("/login")
