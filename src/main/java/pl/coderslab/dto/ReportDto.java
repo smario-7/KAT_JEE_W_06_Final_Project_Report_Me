@@ -1,16 +1,49 @@
 package pl.coderslab.dto;
 
+import javax.validation.constraints.Digits;
+
 public class ReportDto {
+    @Digits(integer = 2, fraction = 0)
     private int contract;
+    @Digits(integer = 2, fraction = 0)
     private int annex;
+    @Digits(integer = 2, fraction = 0)
     private int businessToBusiness;
-    private int heandset;
+    @Digits(integer = 2, fraction = 0)
+    private int handset;
+    @Digits(integer = 2, fraction = 0)
     private int play360;
+    @Digits(integer = 2, fraction = 0)
     private int television;
+    @Digits(integer = 2, fraction = 0)
     private int upSaleOnTheSameDay;
+    @Digits(integer = 2, fraction = 0)
     private int teleSales;
+    @Digits(integer = 2, fraction = 0)
     private int displayProtection;
+    @Digits(integer = 2, fraction = 0)
     private int accessories;
+
+    public ReportDto(@Digits(integer = 2, fraction = 0) int contract, @Digits(integer = 2, fraction = 0) int annex,
+                     @Digits(integer = 2, fraction = 0) int businessToBusiness, @Digits(integer = 2, fraction = 0) int handset,
+                     @Digits(integer = 2, fraction = 0) int play360, @Digits(integer = 2, fraction = 0) int television,
+                     @Digits(integer = 2, fraction = 0) int upSaleOnTheSameDay, @Digits(integer = 2, fraction = 0) int teleSales,
+                     @Digits(integer = 2, fraction = 0) int displayProtection,
+                     @Digits(integer = 2, fraction = 0) int accessories) {
+        this.contract = contract;
+        this.annex = annex;
+        this.businessToBusiness = businessToBusiness;
+        this.handset = handset;
+        this.play360 = play360;
+        this.television = television;
+        this.upSaleOnTheSameDay = upSaleOnTheSameDay;
+        this.teleSales = teleSales;
+        this.displayProtection = displayProtection;
+        this.accessories = accessories;
+    }
+
+    public ReportDto() {
+    }
 
     public int getContract() {
         return contract;
@@ -36,12 +69,12 @@ public class ReportDto {
         this.businessToBusiness = businessToBusiness;
     }
 
-    public int getHeandset() {
-        return heandset;
+    public int getHandset() {
+        return handset;
     }
 
-    public void setHeandset(int heandset) {
-        this.heandset = heandset;
+    public void setHandset(int heandset) {
+        this.handset = handset;
     }
 
     public int getPlay360() {

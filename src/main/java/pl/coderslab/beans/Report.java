@@ -1,7 +1,11 @@
 package pl.coderslab.beans;
 
+import org.hibernate.mapping.ToOne;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "reports")
@@ -10,9 +14,9 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private User userId;
-    @ManyToOne
-    private Shop shopId;
+    private User user;
+    @OneToOne
+    private Shop shop;
     private int contract;
     private int annex;
     private int businessToBusiness;
@@ -35,14 +39,6 @@ public class Report {
         this.updateTime = LocalDateTime.now();
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
     public Long getId() {
         return id;
     }
@@ -51,20 +47,20 @@ public class Report {
         this.id = id;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Shop getShopId() {
-        return shopId;
+    public Shop getShop() {
+        return shop;
     }
 
-    public void setShopId(Shop shopId) {
-        this.shopId = shopId;
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 
     public int getContract() {
@@ -145,5 +141,21 @@ public class Report {
 
     public void setAccessories(int accessories) {
         this.accessories = accessories;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }
