@@ -70,8 +70,7 @@ public class ReportController {
 
     @ModelAttribute("basicUserData")
     public String[] basicUserData(@AuthenticationPrincipal CurrentUser currentUser) {
-        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName()};
+        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName(), currentUser.getUser().getShop().getShopName()};
     }
-
 
 }

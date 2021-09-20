@@ -1,28 +1,33 @@
 package pl.coderslab.dto;
 
-public class UserReadPassDto {
+import pl.coderslab.model.Role;
+
+import java.util.Set;
+
+public class UserReadListDto {
     private final Long id;
-    private final Long shopId;
+    private final String shop;
     private final String firstName;
     private final String lastName;
     private final String email;
-    private final String password;
+    private final Set<Role> role;
 
-    public UserReadPassDto(Long id, Long shopId, String firstName, String lastName, String email, String password) {
+
+    public UserReadListDto(Long id, String firstName, String lastName, String email, String shop, Set<Role> role) {
         this.id = id;
-        this.shopId = shopId;
+        this.shop = shop;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Long getShopId() {
-        return shopId;
+    public String getShop() {
+        return shop;
     }
 
     public String getFirstName() {
@@ -37,7 +42,7 @@ public class UserReadPassDto {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<Role> getRole() {
+        return role;
     }
 }

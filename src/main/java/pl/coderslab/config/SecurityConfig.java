@@ -30,8 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(customUserDetailsService())
                 .authorizeRequests()
-                .antMatchers("/report/**", "/user/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("newUser").hasRole("START")
+                .antMatchers("/report/**", "/admin/**").access("hasAnyAuthority('Konsultant', 'Admin')")
+                .antMatchers("/newUser").access("hasAuthority('Nowy')")
                 .antMatchers("/login", "/css/**", "/js/**").permitAll()
                 .and().formLogin().usernameParameter("email")
                 .loginPage("/login")

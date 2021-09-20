@@ -44,7 +44,7 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row justify-content-start">
+        <div class="row justify-content-center">
 
             Nie masz jeszcze przyznanych uprawnień <br>
             Zgłoś się do Koordynatora

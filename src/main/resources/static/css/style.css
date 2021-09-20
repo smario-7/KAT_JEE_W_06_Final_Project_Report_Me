@@ -34,4 +34,10 @@
 .data-print {
     background-color: #e9ecef;
 }
+.user-list {
+    font-size: smaller;
+}
+.user-list-head {
+    background-color: mistyrose;
+}
 

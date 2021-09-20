@@ -22,12 +22,12 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String redirectUrl = null;
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_USER")){
+            if (grantedAuthority.getAuthority().equals("Konsultant")){
                 redirectUrl = "/report/view";
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")){
-                redirectUrl = "/admin";
-            } else if (grantedAuthority.getAuthority().equals("ROLE_START")){
+            } else if (grantedAuthority.getAuthority().equals("Admin")){
+                redirectUrl = "/admin/view";
+            } else if (grantedAuthority.getAuthority().equals("Nowy")){
                 redirectUrl = "/newUser";
             }
         }

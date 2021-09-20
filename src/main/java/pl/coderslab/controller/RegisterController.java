@@ -36,7 +36,7 @@ public class RegisterController {
     }
     @PostMapping
     public String postRegister (@ModelAttribute("user") @Valid UserAddDto user, BindingResult bindingResult){
-        log.info("!!!!! {}" , user);
+        log.info("!!!!! {}" , user.getShop());
 
         if (bindingResult.hasErrors()){
             return "register";

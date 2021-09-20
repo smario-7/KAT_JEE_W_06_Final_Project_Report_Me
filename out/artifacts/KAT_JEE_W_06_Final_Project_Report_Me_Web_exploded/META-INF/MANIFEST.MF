@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: mario
-Build-Jdk: version 14.0.2
-Implementation-Title: ReportMe
-Implementation-Version: 1.0.1-SNAPSHOT
-Implementation-Vendor-Id: pl.coderslab
-Main-Class: ${start-class}
-

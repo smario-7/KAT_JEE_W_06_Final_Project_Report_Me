@@ -20,17 +20,15 @@
     <div class="row">
         <div class="dropdown-divider"></div>
     </div>
-    <div class="row justify-content-start">
+    <div class="row justify-content-center">
         <form:form action="/register" method="post" modelAttribute="user">
             <div class="row">
                 <div class="col-5">
                     <label class="form-label">Login (adres email)</label>
                 </div>
                 <div class="col-5">
-                    <form:input type="email" name="email" path="email" placeholder="email"/>
-                </div>
-                <div class="col-5">
                     <span><form:errors path="email" cssClass="error"/></span>
+                    <form:input type="email" name="email" path="email" placeholder="email"/>
                 </div>
             </div>
             <div class="row">
@@ -38,8 +36,8 @@
                     <label class="from-label">Hasło</label>
                 </div>
                 <div class="col-5">
-                    <span><form:errors path="password" cssClass="error"/></span>
                     <form:input type="password" name="password" path="password" placeholder="min.6 znaków"/>
+                    <span><form:errors path="password" cssClass="error"/></span>
                 </div>
             </div>
             <div class="row">
@@ -47,9 +45,9 @@
                     <label class="col-form-label">Hasło</label>
                 </div>
                 <div class="col-5">
-                    <span><form:errors path="passwordRepeat" cssClass="error"/></span>
                     <form:input type="password" name="passwordRepeat" path="passwordRepeat"
                                 placeholder="Powtórz hasło"/>
+                    <span><form:errors path="passwordRepeat" cssClass="error"/></span>
                 </div>
             </div>
             <div class="row">
@@ -74,11 +72,13 @@
                 <div class="col-5">
                     <label class="col-form-label">Wybierz Salon</label>
                 </div>
-                <form:select class="form-control" path="shop" name="shopSelect">
-                    <c:forEach items="${shops}" var="shop">
-                        <option>${shop.shopName}</option>
-                    </c:forEach>
-                </form:select>
+                <div class="col-5">
+                    <form:select class="form-control" path="shop" name="shopSelect" itemValue="">
+                        <c:forEach items="${shops}" var="shop">
+                            <form:option value="${shop.id}">${shop.shopName}</form:option>
+                        </c:forEach>
+                    </form:select>
+                </div>
             </div>
             <div class="row">
                 <span><form:errors path="shop" cssClass="error"/></span>

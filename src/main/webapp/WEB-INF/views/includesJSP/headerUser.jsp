@@ -23,13 +23,12 @@
                         Opcje
                     </a>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/report/userdata">Moje dane</a>
                         <a class="dropdown-item" href="/report/view">Raporty</a>
-                        <a class="dropdown-item" href="/user/view">Użytkownicy</a>
+                        <a class="dropdown-item" href="/admin/view">Użytkownicy</a>
                         <a class="dropdown-item" href="#">test</a>
                         <a class="dropdown-item" href="#">Salony</a>
                     </div>
-
-
                 </div>
 
                 <div class="d-flex align-items-center">

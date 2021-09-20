@@ -10,34 +10,41 @@
 <%@ include file="../includesJSP/headerUser.jsp" %>
 
 <div class="container-fluid">
+
     <nav class="col">
-
         <div class="nav-bottons">
-            <div class="row justify-content-start">
-                <div class="col-1">
-                    <a href="/report/view">
-                        <button type="button" class="btn btn-primary btn-sm">Raporty</button>
-                    </a>
-                </div>
+            <div class="row justify-content-between">
+                <div class="row justify-content-start">
+                    <div class="col">
+                        <a href="/report/view">
+                            <button type="button" class="btn btn-primary btn-sm">Raporty</button>
+                        </a>
+                    </div>
 
-                <div class="col-1">
-                    <a href="/report/form">
-                        <button type="button" class="btn btn-primary btn-sm">Nowy raport</button>
-                    </a>
-                </div>
-                <div class="col-1 dropdown">
-                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" id="dataMenu"
-                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                        data
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item" href="">rok</div>
+                    <div class="col">
+                        <a href="/report/form">
+                            <button type="button" class="btn btn-primary btn-sm">Nowy raport</button>
+                        </a>
+                    </div>
+                    <div class="col dropdown">
+                        <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" id="dataMenu"
+                           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            data
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" href="">rok</div>
+                        </div>
                     </div>
                 </div>
-
+                <div class="row align-items-center">
+                    <div class="col report-table-sm">
+                        Twója lokalizacja: ${basicUserData[2]}
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
 
     <div class="row justify-content-md-center data-print">
         <div class="col">Wrzesień 2021</div>

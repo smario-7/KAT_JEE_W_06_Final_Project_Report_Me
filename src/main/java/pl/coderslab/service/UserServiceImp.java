@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.dto.UserAddDto;
 import pl.coderslab.dto.UserReadDto;
+import pl.coderslab.dto.UserReadListDto;
 import pl.coderslab.model.ReportUser;
 import pl.coderslab.model.Role;
 import pl.coderslab.repository.RoleRepository;
@@ -43,12 +44,12 @@ public class UserServiceImp implements UserService {
         newReportUser.setEmail(userAddDto.getEmail());
         newReportUser.setPassword(passwordEncoder.encode(userAddDto.getPassword()));
         newReportUser.enable();
-        Role roles = roleRepository.findByName("ROLE_USER");
+        Role roles = roleRepository.findByName("Nowy");
         newReportUser.addRole(roles);
         userRepository.save(newReportUser);
     }
 
-    public void update(UserReadDto userReadDto){
+    public void update(UserReadDto userReadDto) {
         ReportUser newReportUser = userRepository.findById(userReadDto.getId()).orElseThrow(EntityNotFoundException::new);
         newReportUser.setId(userReadDto.getId());
         newReportUser.setShop(shopRepository.findById(userReadDto.getShopId()).orElseThrow(EntityNotFoundException::new));
@@ -62,42 +63,49 @@ public class UserServiceImp implements UserService {
     public List<UserReadDto> findAll() {
         return userRepository.findAll()
                 .stream()
-                .map(reportUser -> new UserReadDto(reportUser.getId(), reportUser.getShop().getId(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail()))
+                .map(reportUser -> new UserReadDto(reportUser.getId(), reportUser.getShop().getId(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail(), reportUser.getRoles()))
                 .collect(Collectors.toList());
     }
 
-    public UserReadDto findById (Long id){
+    public UserReadDto findById(Long id) {
         ReportUser reportUser = userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return new UserReadDto(reportUser.getId(), reportUser.getShop().getId(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail());
+        return new UserReadDto(reportUser.getId(), reportUser.getShop().getId(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail(), reportUser.getRoles());
     }
 
-    public void delete(Long id){
-        userRepository.deleteById(id);
-    };
+    public List<UserReadListDto> findAllSortedByShop() {
+        return userRepository.findAllByOrderByShop()
+                .stream()
+                .map(reportUser -> new UserReadListDto(reportUser.getId(), reportUser.getFirstName(), reportUser.getLastName(),
+                        reportUser.getEmail(), reportUser.getShop().getShopName(), reportUser.getRoles()))
+                .collect(Collectors.toList());
+    }
+    public List<Role> findRoleList(){
+        return roleRepository.findAll();
 
-    public boolean passwordConfirm(UserAddDto userAddDto){
+    }
+
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    ;
+
+    public boolean passwordConfirm(UserAddDto userAddDto) {
         return userAddDto.getPassword().equals(userAddDto.getPasswordRepeat());
     }
 
-    public boolean userExist (UserAddDto userAddDto){
+    public boolean userExist(UserAddDto userAddDto) {
         return userRepository.existsByEmail(userAddDto.getEmail());
     }
 
-//    public UserReadPassDto findByEmail(String email){
-//        ReportUser reportUser = userRepository.findByEmail(email);
-//        if (reportUser == null){
-//            throw new UsernameNotFoundException(email);
-//        }
-//        return new ModelMapper().map(reportUser, UserReadPassDto.class);
-//    }
 
     @Override
-    public UserDetails loadUserByUsername(String email){
+    public UserDetails loadUserByUsername(String email) {
         ReportUser reportUser = userRepository.findByEmail(email);
         if (reportUser == null) {
             throw new UsernameNotFoundException("Nie mamy takiego maila w bazie " + email);
         }
-        return new org.springframework.security.core.userdetails.User(reportUser.getEmail(), reportUser.getPassword(),new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(reportUser.getEmail(), reportUser.getPassword(), new ArrayList<>());
     }
 //    public Collection<? extends GrantedAuthority> mapRoles(Collection<Role> roles)
 

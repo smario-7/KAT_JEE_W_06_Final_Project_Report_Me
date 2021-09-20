@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ShopDto;
 import pl.coderslab.dto.UserAddDto;
 import pl.coderslab.dto.UserReadDto;
+import pl.coderslab.model.Role;
 import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ShopService;
 import pl.coderslab.service.UserService;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/admin")
 public class UserController {
     private final UserService userService;
     private final ShopService shopService;
@@ -47,13 +48,13 @@ public class UserController {
     @GetMapping("/form")
     public String getUser(Model model) {
         model.addAttribute("user", new UserAddDto());
-        return "/user/formUser";
+        return "user/formUser";
     }
 
     @PostMapping("/form")
     public String addUser(@ModelAttribute("user") @Valid UserAddDto user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/user/formUser";
+            return "user/formUser";
         }
         userService.add(user);
         return "redirect:/user/view";
@@ -61,25 +62,27 @@ public class UserController {
 
     @GetMapping("/view")
     public ModelAndView viewAllUser(@AuthenticationPrincipal CurrentUser currentUser) {
-        ModelAndView modelAndView = new ModelAndView("user/viewUser");
-        modelAndView.addAllObjects(Map.of("users", userService.findAll()));
-        List<UserReadDto> userList = userService.findAll();
+        ModelAndView modelAndView = new ModelAndView("admin/viewUser");
+        modelAndView.addAllObjects(Map.of("users", userService.findAllSortedByShop()));
+//        List<UserReadDto> userList = userService.findAll();
         System.out.println();
-        System.out.println(userList.toString());
+//        System.out.println(userList.toString());
         return modelAndView;
     }
 
     @GetMapping(value = "/edit", params = "id")
     public String editUser(@RequestParam Long id, Model model) {
         UserReadDto userReadDto = userService.findById(id);
+        List<Role> roles = userService.findRoleList();
         model.addAttribute("editUser", userReadDto);
-        return "user/editUser";
+        model.addAttribute("roles", roles);
+        return "admin/editUser";
     }
 
     @PostMapping("/edit")
     public String edutUserPost(@ModelAttribute("editUser") @Valid UserReadDto userReadDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "user/editUser";
+            return "admin/editUser";
         }
         userService.update(userReadDto);
         return "redirect:/user/view";
@@ -103,7 +106,7 @@ public class UserController {
 
     @ModelAttribute("basicUserData")
     public String[] basicUserData(@AuthenticationPrincipal CurrentUser currentUser) {
-        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName()};
+        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName(), currentUser.getUser().getShop().getShopName()};
     }
 
 }
