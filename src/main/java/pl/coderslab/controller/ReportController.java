@@ -1,17 +1,17 @@
 package pl.coderslab.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ReportDto;
-import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
 import pl.coderslab.dto.ReportEditDto;
-
+import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ReportMeService;
 
 import javax.validation.Valid;
-
 import java.util.Map;
 
 
@@ -27,13 +27,13 @@ public class ReportController {
     @GetMapping("/form")
     public String getReport(Model model) {
         model.addAttribute("report", new ReportDto());
-        return "/report/formReport";
+        return "report/formReport";
     }
 
     @PostMapping("/form")
-    public String postRaport(@Valid ReportDto report, BindingResult bindingResult) throws Exception {
+    public String postRaport(@ModelAttribute("report") @Valid ReportDto report, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()){
-            return "error";
+            return "report/formReport";
         }
         reportMeService.add(report);
         return "redirect:/report/view";
@@ -42,7 +42,6 @@ public class ReportController {
     @GetMapping("/view")
     public ModelAndView viewReport() {
         ModelAndView modelAndView = new ModelAndView("report/viewReport");
-
         modelAndView.addAllObjects(Map.of("reports", reportMeService.findAll()));
         return modelAndView;
     }
@@ -55,16 +54,23 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String saveEditReport (@Valid ReportEditDto reportEditDto, BindingResult bindingResult) throws Exception {
+    public String saveEditReport (@ModelAttribute("reportEditDto") @Valid ReportEditDto reportEditDto, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            return "error";
+            return "report/editReport";
         }
         reportMeService.update(reportEditDto);
         return "redirect:/report/view";
 
     }
 
+    @ModelAttribute("headername")
+    public String headerName(){
+        return "Raporty";
+    }
 
-
+    @ModelAttribute("basicUserData")
+    public String[] basicUserData(@AuthenticationPrincipal CurrentUser currentUser) {
+        return new String[]{currentUser.getUsername(), currentUser.getUser().getFirstName(), currentUser.getUser().getShop().getShopName()};
+    }
 
 }

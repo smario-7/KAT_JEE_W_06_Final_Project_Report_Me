@@ -1,46 +1,23 @@
 package pl.coderslab.service;
 
-import org.springframework.stereotype.Service;
-import pl.coderslab.beans.User;
-import pl.coderslab.dto.UserDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import pl.coderslab.dto.UserAddDto;
 import pl.coderslab.dto.UserReadDto;
-import pl.coderslab.repository.ShopRepository;
-import pl.coderslab.repository.UserRepository;
+import pl.coderslab.dto.UserReadListDto;
+import pl.coderslab.model.ReportUser;
+import pl.coderslab.model.Role;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Service
-public class UserService implements UserServiceInt {
-    private final UserRepository userRepository;
-    private final ShopRepository shopRepository;
-
-    public UserService(UserRepository userRepository, ShopRepository shopRepository) {
-        this.userRepository = userRepository;
-        this.shopRepository = shopRepository;
-    }
-
-    public void add(UserDto userDto) {
-        User newUser = new User();
-        newUser.setShop(shopRepository.findById(userDto.getShopId()).orElseThrow(EntityNotFoundException::new));
-        newUser.setFirstName(userDto.getFirstName());
-        newUser.setLastName(userDto.getLastName());
-        newUser.setEmail(userDto.getEmail());
-        newUser.setPassword("none");
-        userRepository.save(newUser);
-    }
-
-    public List<UserReadDto> findAll() {
-        return userRepository.findAll()
-                .stream()
-                .map(user -> new UserReadDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail()))
-                .collect(Collectors.toList());
-
-    }
-    public void delete(Long id){
-        userRepository.deleteById(id);
-    };
-
-
+public interface UserService extends UserDetailsService {
+    void add(UserAddDto userAddDto);
+    List<UserReadDto> findAll();
+    void delete(Long id);
+    UserReadDto findById(Long id);
+    void update(UserReadDto userReadDto);
+    ReportUser findByEmail(String email);
+    boolean passwordConfirm(UserAddDto userAddDto);
+    boolean userExist(UserAddDto userAddDto);
+    List<UserReadListDto> findAllSortedByShop();
+    List<Role> findRoleList();
 }

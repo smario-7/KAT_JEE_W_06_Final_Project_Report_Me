@@ -3,46 +3,118 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <%@ include file="../head.jsp" %>
+    <%@ include file="../includesJSP/head.jsp" %>
     <title>Report Views</title>
 </head>
 <body>
-<div class="container-sm"><h2><p>Report Me</p></h2></div>
+<%@ include file="../includesJSP/headerUser.jsp" %>
 
-<div class="row justify-content-md-left">
-    <div class="col">
-        <a href="/report/form"><button type="button" class="btn btn-primary btn-sm">Nowy raport</button></a>
-    </div>
-    <div class="col" >
-        <a href="/user/view"><button type="button" class="btn btn-secondary btn-sm">Konsultantci</button></a>
-    </div>
-
-</div>
-<br>
 <div class="container-fluid">
-<div class="row" id="table1" >
-    <c:forEach items="${reports}" var="report">
 
-        <div class="col">
-            Użytkownik : ${report.userName}     <br>
-            Sklep : ${report.shopName}  <br>
-            Umowy : ${report.contract}  <br>
-            Aneksy : ${report.annex}  <br>
-            B2B : ${report.businessToBusiness}  <br>
-            Handset : ${report.heandset}  <br>
-            Play360 : ${report.play360}  <br>
-            Telewizja : ${report.television}  <br>
-            Dosprzedaż DDA : ${report.upSaleOnTheSameDay}  <br>
-            TeleSales : ${report.teleSales}  <br>
-            Ochrona Wyś. : ${report.displayProtection}  <br>
-            Akcesoria : ${report.accessories}  <br>
+    <nav class="col">
+        <div class="nav-bottons">
+            <div class="row justify-content-between">
+                <div class="row justify-content-start">
+                    <div class="col">
+                        <a href="/report/view">
+                            <button type="button" class="btn btn-primary btn-sm">Raporty</button>
+                        </a>
+                    </div>
 
+                    <div class="col">
+                        <a href="/report/form">
+                            <button type="button" class="btn btn-primary btn-sm">Nowy raport</button>
+                        </a>
+                    </div>
+                    <div class="col dropdown">
+                        <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" id="dataMenu"
+                           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            data
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" href="">rok</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col report-table-sm">
+                        Twója lokalizacja: ${basicUserData[2]}
+                    </div>
+                </div>
+            </div>
         </div>
-     <a href="/report/edit?id=${report.id}"><button type="button" class="btn btn-primary btn-sm">Edytuj</button></a>
-    </c:forEach>
-</div>
-</div>
+    </nav>
 
-<%@ include file="../footer.jsp" %>
+
+    <div class="row justify-content-md-center data-print">
+        <div class="col">Wrzesień 2021</div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-start">
+            <c:forEach items="${reports}" var="report">
+                <div class="col-2">
+                    <div class="row justify-content-center">
+                        <div class="col">${report.shopName}</div>
+                    </div>
+                    <div class="container-fluid report-table-sm" id="table${report.id}">
+
+                        <div class="row justify-content-start">
+                            <div class="col">Użytkownik</div>
+                            <div class="col">${report.userName}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">Umowy</div>
+                            <div class="col">${report.contract}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Aneksy</div>
+                            <div class="col">${report.annex}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">B2B</div>
+                            <div class="col">${report.businessToBusiness}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Handset</div>
+                            <div class="col">${report.heandset}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Play360</div>
+                            <div class="col">${report.play360}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Telewizja</div>
+                            <div class="col">${report.television}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Dosprzedaż DDA</div>
+                            <div class="col">${report.upSaleOnTheSameDay}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">TeleSales</div>
+                            <div class="col">${report.teleSales}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Ochrona Wyś.</div>
+                            <div class="col">${report.displayProtection}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Akcesoria</div>
+                            <div class="col">${report.accessories}</div>
+                        </div>
+                        <div class="col">
+                            <a href="/report/edit?id=${report.id}">
+                                <button type="button" class="btn btn-primary btn-sm">Edytuj</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+<%@ include file="../includesJSP/footer.jsp" %>
 </body>
 </html>

@@ -1,11 +1,7 @@
-package pl.coderslab.beans;
-
-import org.hibernate.mapping.ToOne;
+package pl.coderslab.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "reports")
@@ -14,7 +10,7 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private User user;
+    private ReportUser reportUser;
     @OneToOne
     private Shop shop;
     private int contract;
@@ -47,12 +43,12 @@ public class Report {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public ReportUser getUser() {
+        return reportUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(ReportUser reportUser) {
+        this.reportUser = reportUser;
     }
 
     public Shop getShop() {

@@ -3,7 +3,7 @@ package pl.coderslab.service;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import pl.coderslab.beans.Report;
+import pl.coderslab.model.Report;
 import pl.coderslab.dto.ReportDto;
 import pl.coderslab.repository.ReportRepository;
 import pl.coderslab.repository.ShopRepository;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 @Ignore("Do poprawy")
-class ReportServiceTest {
+class ReportMeServiceImpTest {
 
     ReportRepository reportRepositoryMock = mock(ReportRepository.class);
     UserRepository userRepositoryMock = mock(UserRepository.class);
@@ -29,10 +29,10 @@ class ReportServiceTest {
                 1, 2, 3, 4, 5, 6, 7,
                 8, 9, 10);
 
-        ReportService reportService = new ReportService(reportRepositoryMock, userRepositoryMock, shopRepositoryMock);
+        ReportMeServiceImp reportMeServiceImp = new ReportMeServiceImp(reportRepositoryMock, userRepositoryMock, shopRepositoryMock);
 
         //when
-        reportService.add(reportDto);
+        reportMeServiceImp.add(reportDto);
         ArgumentCaptor<Report> reportArgumentCaptor = ArgumentCaptor.forClass(Report.class);
 
         //then

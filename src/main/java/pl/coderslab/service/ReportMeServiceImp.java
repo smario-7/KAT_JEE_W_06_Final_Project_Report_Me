@@ -1,6 +1,6 @@
 package pl.coderslab.service;
 
-import pl.coderslab.beans.Report;
+import pl.coderslab.model.Report;
 import pl.coderslab.dto.ReportDto;
 import pl.coderslab.dto.ReportEditDto;
 import pl.coderslab.dto.ReportReadDto;
@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ReportService implements ReportMeService{
+public class ReportMeServiceImp implements ReportMeService{
     private final ReportRepository reportRepository;
     private final UserRepository userRepository;
     private final ShopRepository shopRepository;
 
-    public ReportService(ReportRepository reportRepository, UserRepository userRepository, ShopRepository shopRepository) {
+    public ReportMeServiceImp(ReportRepository reportRepository, UserRepository userRepository, ShopRepository shopRepository) {
         this.reportRepository = reportRepository;
         this.userRepository = userRepository;
         this.shopRepository = shopRepository;
@@ -76,8 +76,7 @@ public class ReportService implements ReportMeService{
          Report report = reportRepository.findById(id).orElseThrow(EntityNotFoundException::new);
          return new ReportEditDto(report.getId(), report.getContract(), report.getAnnex(), report.getBusinessToBusiness(),
                  report.getHeandset(), report.getPlay360(), report.getTelevision(), report.getUpSaleOnTheSameDay(),
-                 report.getTeleSales(), report.getDisplayProtection(), report.getAccessories(), report.getCreatedTime(),
-                 report.getCreatedTime());
+                 report.getTeleSales(), report.getDisplayProtection(), report.getAccessories());
     }
 
 }

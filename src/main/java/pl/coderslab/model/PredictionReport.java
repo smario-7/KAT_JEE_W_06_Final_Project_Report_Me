@@ -1,43 +1,25 @@
-package pl.coderslab.dto;
+package pl.coderslab.model;
 
-import javax.validation.constraints.Digits;
+import javax.persistence.*;
 
-public class ReportEditDto {
+@Entity
+@Table(name= "prediction_report")
+public class PredictionReport {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Digits(integer = 2, fraction = 0)
+    @OneToOne
+    private Report report;
     private int contract;
-    @Digits(integer = 2, fraction = 0)
     private int annex;
-    @Digits(integer = 2, fraction = 0)
-    private int businessToBusiness;
-    @Digits(integer = 2, fraction = 0)
+    private int businessToBusiness;;
     private int heandset;
-    @Digits(integer = 2, fraction = 0)
     private int play360;
-    @Digits(integer = 2, fraction = 0)
     private int television;
-    @Digits(integer = 2, fraction = 0)
     private int upSaleOnTheSameDay;
-    @Digits(integer = 2, fraction = 0)
     private int teleSales;
-    @Digits(integer = 2, fraction = 0)
-    private int displayProtection;
-    @Digits(integer = 2, fraction = 0)
+    private int displayProtection;;
     private int accessories;
-
-    public ReportEditDto(Long id, int contract, int annex, int businessToBusiness, int heandset, int play360, int television, int upSaleOnTheSameDay, int teleSales, int displayProtection, int accessories) {
-        this.id = id;
-        this.contract = contract;
-        this.annex = annex;
-        this.businessToBusiness = businessToBusiness;
-        this.heandset = heandset;
-        this.play360 = play360;
-        this.television = television;
-        this.upSaleOnTheSameDay = upSaleOnTheSameDay;
-        this.teleSales = teleSales;
-        this.displayProtection = displayProtection;
-        this.accessories = accessories;
-    }
 
     public Long getId() {
         return id;
@@ -45,6 +27,14 @@ public class ReportEditDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
     }
 
     public int getContract() {

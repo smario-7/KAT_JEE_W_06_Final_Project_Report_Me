@@ -1,8 +1,43 @@
+
 .selector-for-some-widget {
     box-sizing: content-box;
 }
+.navbar {
+    margin-bottom: 0;
+    padding: 6px !important;
+    height: 50px;
+    z-index: 5000;
+    /*position: fixed;*/
+}
+.container-fluid{
+    padding: 3px !important;
+}
+.bg-Secondary {
+    background-color: #c7b1ff;
+}
 
-#table1 {
+.container-fluid{
+    font-family: "Helvetica Neue", sans-serif;
+}
+.nav-bottons {
+    padding: 3px;
+}
+.error {
+    color:red;
+    font-size: 0.8em;
+}
 
+.report-table-sm {
+    font-size: smaller;
+    background-color: #e9ecef;
+}
+.data-print {
+    background-color: #e9ecef;
+}
+.user-list {
+    font-size: smaller;
+}
+.user-list-head {
+    background-color: mistyrose;
 }
 
