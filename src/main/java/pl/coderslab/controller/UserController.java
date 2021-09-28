@@ -1,28 +1,21 @@
 package pl.coderslab.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.dto.ShopDto;
 import pl.coderslab.dto.UserAddDto;
-import pl.coderslab.dto.UserReadDto;
-import pl.coderslab.model.Role;
 import pl.coderslab.service.CurrentUser;
 import pl.coderslab.service.ShopService;
 import pl.coderslab.service.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
     private final ShopService shopService;
@@ -31,7 +24,6 @@ public class UserController {
         this.userService = userService;
         this.shopService = shopService;
     }
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
     // add first user
 //    @RequestMapping("/createuser")
@@ -60,39 +52,6 @@ public class UserController {
         return "redirect:/user/view";
     }
 
-    @GetMapping("/view")
-    public ModelAndView viewAllUser(@AuthenticationPrincipal CurrentUser currentUser) {
-        ModelAndView modelAndView = new ModelAndView("admin/viewUser");
-        modelAndView.addAllObjects(Map.of("users", userService.findAllSortedByShop()));
-//        List<UserReadDto> userList = userService.findAll();
-        System.out.println();
-//        System.out.println(userList.toString());
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/edit", params = "id")
-    public String editUser(@RequestParam Long id, Model model) {
-        UserReadDto userReadDto = userService.findById(id);
-        List<Role> roles = userService.findRoleList();
-        model.addAttribute("editUser", userReadDto);
-        model.addAttribute("roles", roles);
-        return "admin/editUser";
-    }
-
-    @PostMapping("/edit")
-    public String edutUserPost(@ModelAttribute("editUser") @Valid UserReadDto userReadDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "admin/editUser";
-        }
-        userService.update(userReadDto);
-        return "redirect:/user/view";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.delete(id);
-        return "redirect:/user/view";
-    }
 
     @ModelAttribute("shops")
     public Collection<ShopDto> shops() {

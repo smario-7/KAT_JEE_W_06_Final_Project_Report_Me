@@ -2,6 +2,7 @@ package pl.coderslab.dto;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class ReportReadDto {
     private final Long id;
@@ -30,9 +31,11 @@ public class ReportReadDto {
     @Digits(integer = 2, fraction = 0)
     private final int accessories;
 
+    private final LocalDate createdData;
+
     public ReportReadDto(Long id, String userName, String shopName, int contract, int annex, int businessToBusiness,
                          int heandset, int play360, int television, int upSaleOnTheSameDay, int teleSales,
-                         int displayProtection, int accessories) {
+                         int displayProtection, int accessories, LocalDate createdData) {
         this.id = id;
         this.userName = userName;
         this.shopName = shopName;
@@ -46,6 +49,7 @@ public class ReportReadDto {
         this.teleSales = teleSales;
         this.displayProtection = displayProtection;
         this.accessories = accessories;
+        this.createdData = createdData;
     }
 
     public Long getId() {
@@ -97,6 +101,10 @@ public class ReportReadDto {
 
     public int getAccessories() {
         return accessories;
+    }
+
+    public LocalDate getCreatedData() {
+        return createdData;
     }
 
     @Override

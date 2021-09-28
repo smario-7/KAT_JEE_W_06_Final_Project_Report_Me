@@ -45,9 +45,12 @@
                 Wybierz Lakalizację
             </div>
             <div class="col-md-2">
-                <form:select path="shopId" items="${shops}" itemLabel="shopName"
-                             itemValue="id"/>
-                <form:errors path="shopId" cssClass="error"/>
+                <form:select class="form-control" path="shop.id" name="shopSelect">
+                    <c:forEach items="${shops}" var="shop">
+                        <form:option value="${shop.id}">${shop.shopName}</form:option>
+                    </c:forEach>
+                </form:select>
+
             </div>
         </div>
         <div class="row">
@@ -55,14 +58,18 @@
                 Uprawnienia
             </div>
             <div class="col-md-2">
-                <form:select path="role" items="${roles}" itemLabel="name" itemValue="id"/>
-                <form:errors path="role" cssClass="error"/>
+                <form:select class="form-control" path="roles" name="roleSelect" >
+                    <c:forEach items="${roles}" var="r">
+                        <form:option value="${r.id}">${r.name}</form:option>
+                    </c:forEach>
+                </form:select>
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-2">
-                <button class="btn btn-outline-primary btn-sm" type="button" href="#">Wstecz</button>
+                <a class="btn btn-outline-primary btn-sm" type="button" href="/admin/view">Wstecz</a>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-outline-danger btn-sm" type="submit">Zapisz</button>

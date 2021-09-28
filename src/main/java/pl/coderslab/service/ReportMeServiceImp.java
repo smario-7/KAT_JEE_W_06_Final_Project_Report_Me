@@ -1,15 +1,17 @@
 package pl.coderslab.service;
 
-import pl.coderslab.model.Report;
+import org.springframework.stereotype.Service;
 import pl.coderslab.dto.ReportDto;
 import pl.coderslab.dto.ReportEditDto;
 import pl.coderslab.dto.ReportReadDto;
-import org.springframework.stereotype.Service;
+import pl.coderslab.model.Report;
 import pl.coderslab.repository.ReportRepository;
 import pl.coderslab.repository.ShopRepository;
 import pl.coderslab.repository.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,10 @@ public class ReportMeServiceImp implements ReportMeService{
         this.reportRepository = reportRepository;
         this.userRepository = userRepository;
         this.shopRepository = shopRepository;
+    }
+
+    public LocalDate dateNow (){
+        return LocalDate.now();
     }
 
     public void add(ReportDto reportDto) {
@@ -60,13 +66,13 @@ public class ReportMeServiceImp implements ReportMeService{
 
         reportRepository.save(newReport);
     }
-    public List<ReportReadDto> findAll() {
-        return reportRepository.findAll()
+    public List<ReportReadDto> findAllSortedByShopAndMonth(LocalDateTime start, LocalDateTime end) {
+        return reportRepository.findAllByCreatedTimeBetweenOrderByShop(start, end)
                 .stream()
                 .map(report -> new ReportReadDto(report.getId(), report.getUser().getFirstName(), report.getShop().getShopName(), report.getContract(),
                         report.getAnnex(), report.getBusinessToBusiness(), report.getHeandset(), report.getPlay360(),
                         report.getTelevision(), report.getUpSaleOnTheSameDay(), report.getTeleSales(),
-                        report.getDisplayProtection(),report.getAccessories())
+                        report.getDisplayProtection(),report.getAccessories(), report.getCreatedTime().toLocalDate())
                     )
                 .collect(Collectors.toList());
 

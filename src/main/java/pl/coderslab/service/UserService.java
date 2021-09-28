@@ -2,6 +2,7 @@ package pl.coderslab.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import pl.coderslab.dto.UserAddDto;
+import pl.coderslab.dto.UserEditRoleDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.dto.UserReadListDto;
 import pl.coderslab.model.ReportUser;
@@ -13,8 +14,8 @@ public interface UserService extends UserDetailsService {
     void add(UserAddDto userAddDto);
     List<UserReadDto> findAll();
     void delete(Long id);
-    UserReadDto findById(Long id);
-    void update(UserReadDto userReadDto);
+    UserEditRoleDto findById(Long id);
+    void update(UserEditRoleDto userEditRoleDto);
     ReportUser findByEmail(String email);
     boolean passwordConfirm(UserAddDto userAddDto);
     boolean userExist(UserAddDto userAddDto);

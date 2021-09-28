@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <%@ include file="../includesJSP/head.jsp" %>
@@ -38,7 +39,7 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="col report-table-sm">
-                        Twója lokalizacja: ${basicUserData[2]}
+                        Twoja lokalizacja: ${basicUserData[2]}
                     </div>
                 </div>
             </div>
@@ -58,8 +59,12 @@
                         <div class="col">${report.shopName}</div>
                     </div>
                     <div class="container-fluid report-table-sm" id="table${report.id}">
+                        <div class="row report-data-color">
+                            <div class="col">Raport z dnia</div>
+                            <div class="col">${report.createdData}</div>
+                        </div>
 
-                        <div class="row justify-content-start">
+                        <div class="row">
                             <div class="col">Użytkownik</div>
                             <div class="col">${report.userName}</div>
                         </div>

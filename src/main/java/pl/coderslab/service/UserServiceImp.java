@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.dto.UserAddDto;
+import pl.coderslab.dto.UserEditRoleDto;
 import pl.coderslab.dto.UserReadDto;
 import pl.coderslab.dto.UserReadListDto;
 import pl.coderslab.model.ReportUser;
@@ -49,14 +50,10 @@ public class UserServiceImp implements UserService {
         userRepository.save(newReportUser);
     }
 
-    public void update(UserReadDto userReadDto) {
-        ReportUser newReportUser = userRepository.findById(userReadDto.getId()).orElseThrow(EntityNotFoundException::new);
-        newReportUser.setId(userReadDto.getId());
-        newReportUser.setShop(shopRepository.findById(userReadDto.getShopId()).orElseThrow(EntityNotFoundException::new));
-        newReportUser.setFirstName(userReadDto.getFirstName());
-        newReportUser.setLastName(userReadDto.getLastName());
-        newReportUser.setEmail(userReadDto.getEmail());
-        newReportUser.setPassword("none");
+    public void update(UserEditRoleDto userEditRoleDto) {
+        ReportUser newReportUser = userRepository.findById(userEditRoleDto.getId()).orElseThrow(EntityNotFoundException::new);
+        newReportUser.setShop(shopRepository.findById(userEditRoleDto.getShop().getId()).orElseThrow(EntityNotFoundException::new));
+        newReportUser.setRoles(userEditRoleDto.getRoles());
         userRepository.save(newReportUser);
     }
 
@@ -67,9 +64,9 @@ public class UserServiceImp implements UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserReadDto findById(Long id) {
+    public UserEditRoleDto findById(Long id) {
         ReportUser reportUser = userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return new UserReadDto(reportUser.getId(), reportUser.getShop().getId(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail(), reportUser.getRoles());
+        return new UserEditRoleDto(reportUser.getId(), reportUser.getShop(), reportUser.getFirstName(), reportUser.getLastName(), reportUser.getEmail(), reportUser.isEnabled(), reportUser.getRoles());
     }
 
     public List<UserReadListDto> findAllSortedByShop() {
