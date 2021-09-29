@@ -1,5 +1,6 @@
 package pl.coderslab;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
@@ -9,6 +10,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.Validator;
 
+@EnableEncryptableProperties
 @SpringBootApplication
 public class ReportMeApplication {
 
