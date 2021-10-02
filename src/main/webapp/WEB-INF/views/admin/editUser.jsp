@@ -11,9 +11,12 @@
 
 <div class="container-fluid">
 
-
-    <form:form method="post" modelAttribute="editUser" action="/reportUser/edit">
+    <form:form method="post" modelAttribute="editUser" action="/admin/edit">
         <form:hidden path="id"/>
+        <form:hidden path="enabled"/>
+        <form:hidden path="email"/>
+        <form:hidden path="firstName"/>
+        <form:hidden path="lastName"/>
 
         <div class="row">
             <div class="col-md-2">

@@ -39,9 +39,8 @@ public class AdminController {
     @GetMapping(value = "/edit", params = "id")
     public String editUser(@RequestParam Long id, Model model) {
         UserEditRoleDto userEditRoleDto = userService.findById(id);
-        List<Role> roles = userService.findRoleList();
+//        List<Role> roles = userService.findRoleList();
         model.addAttribute("editUser", userEditRoleDto);
-        model.addAttribute("roles", roles);
         return "admin/editUser";
     }
 
@@ -51,7 +50,7 @@ public class AdminController {
             return "admin/editUser";
         }
         userService.update(userEditRoleDto);
-        return "redirect:/admin/viewUser";
+        return "redirect:/admin/view";
     }
 
     @GetMapping("/delete/{id}")

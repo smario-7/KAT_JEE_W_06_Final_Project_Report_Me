@@ -53,6 +53,7 @@ public class UserServiceImp implements UserService {
     public void update(UserEditRoleDto userEditRoleDto) {
         ReportUser newReportUser = userRepository.findById(userEditRoleDto.getId()).orElseThrow(EntityNotFoundException::new);
         newReportUser.setShop(shopRepository.findById(userEditRoleDto.getShop().getId()).orElseThrow(EntityNotFoundException::new));
+//        Role roles = roleRepository.findAllById(userEditRoleDto.getRoles().stream().map(role -> new Role(userEditRoleDto.getRoles())));
         newReportUser.setRoles(userEditRoleDto.getRoles());
         userRepository.save(newReportUser);
     }

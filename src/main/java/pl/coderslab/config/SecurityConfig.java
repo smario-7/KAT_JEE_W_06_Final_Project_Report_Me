@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/report/**", "/admin/**").access("hasAnyAuthority('Konsultant', 'Admin')")
                 .antMatchers("/newUser").access("hasAuthority('Nowy')")
                 .antMatchers("/login", "/css/**", "/js/**").permitAll()
-                .and().formLogin().usernameParameter("email")
+                .and().httpBasic().disable()
+                .formLogin().usernameParameter("email")
                 .loginPage("/login")
                 .successHandler(successHandler)
                 ;
