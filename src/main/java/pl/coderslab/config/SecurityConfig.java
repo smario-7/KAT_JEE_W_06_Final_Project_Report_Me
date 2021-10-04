@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(customUserDetailsService())
                 .authorizeRequests()
-                .antMatchers("/report/**", "/admin/**").access("hasAnyAuthority('Konsultant', 'Admin')")
+                .antMatchers("/report/**", "/admin/**").access("hasAnyAuthority('Konsultant', 'Admin', 'Kierownik')")
                 .antMatchers("/newUser").access("hasAuthority('Nowy')")
                 .antMatchers("/login", "/css/**", "/js/**").permitAll()
                 .and().httpBasic().disable()

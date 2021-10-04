@@ -53,8 +53,9 @@
 
     <div class="container-fluid">
         <div class="row justify-content-start">
-            <c:forEach items="${reports}" var="report">
-                <div class="col-2">
+            <c:forEach items="${reports}" var="report" varStatus="colCounter" >
+                <div class="col-2" style="height: 400px; overflow-y: scroll">
+
                     <div class="row justify-content-center">
                         <div class="col">${report.shopName}</div>
                     </div>

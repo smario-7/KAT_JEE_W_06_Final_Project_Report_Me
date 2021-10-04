@@ -3,6 +3,7 @@ package pl.coderslab.dto;
 import javax.validation.constraints.Digits;
 
 public class ReportDto {
+    private String userName;
     @Digits(integer = 2, fraction = 0)
     private int contract;
     @Digits(integer = 2, fraction = 0)
@@ -24,12 +25,15 @@ public class ReportDto {
     @Digits(integer = 2, fraction = 0)
     private int accessories;
 
-    public ReportDto(@Digits(integer = 2, fraction = 0) int contract, @Digits(integer = 2, fraction = 0) int annex,
+
+    public ReportDto(String userName,
+                    @Digits(integer = 2, fraction = 0) int contract, @Digits(integer = 2, fraction = 0) int annex,
                      @Digits(integer = 2, fraction = 0) int businessToBusiness, @Digits(integer = 2, fraction = 0) int handset,
                      @Digits(integer = 2, fraction = 0) int play360, @Digits(integer = 2, fraction = 0) int television,
                      @Digits(integer = 2, fraction = 0) int upSaleOnTheSameDay, @Digits(integer = 2, fraction = 0) int teleSales,
                      @Digits(integer = 2, fraction = 0) int displayProtection,
                      @Digits(integer = 2, fraction = 0) int accessories) {
+        this.userName = userName;
         this.contract = contract;
         this.annex = annex;
         this.businessToBusiness = businessToBusiness;
@@ -43,6 +47,14 @@ public class ReportDto {
     }
 
     public ReportDto() {
+    }
+
+    public String getUser() {
+        return userName;
+    }
+
+    public void setUser(String userName) {
+        this.userName = userName;
     }
 
     public int getContract() {

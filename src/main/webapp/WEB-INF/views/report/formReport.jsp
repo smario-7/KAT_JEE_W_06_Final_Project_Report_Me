@@ -43,58 +43,70 @@
 
         <form:form method="post" modelAttribute="report" action="/report/form">
 
+            <form:hidden path="user" value="${basicUserData[0]}"/>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">Nowe Umowy (UM)</div>
-                    <form:input class="col-3 form-control" path="contract"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="contract"/>
                     <form:errors path="contract" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">Aneksy (AN)</div>
-                    <form:input class="col-3 form-control" path="annex"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="annex"/>
                     <form:errors path="annex" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">Handset (z telefonem)</div>
-                    <form:input class="col-3 form-control" path="handset"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="handset"/>
                     <form:errors path="handset" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">Play 360</div>
-                    <form:input class="col-3 form-control" path="play360"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="play360"/>
                     <form:errors path="play360" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">Telewizja</div>
-                    <form:input class="col-3 form-control" path="television"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="television"/>
                     <form:errors path="television" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col">DDA (dosprzedaż do aneksu)</div>
-                    <form:input class="col-3 form-control" path="upSaleOnTheSameDay"/>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="upSaleOnTheSameDay"/>
                     <form:errors path="upSaleOnTheSameDay" cssClass="error"/>
                 </div>
             </div>
             <div class="form-group">
-                Telesales: <form:input path="teleSales"/>
-                <form:errors path="teleSales" cssClass="error"/>
+                <div class="row align-items-center">
+                    <div class="col">Telesales</div>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="teleSales"/>
+                    <form:errors path="teleSales" cssClass="error"/>
+                </div>
             </div>
-            Ochrona wyświetlacza: <form:input path="displayProtection"/>
-            <form:errors path="displayProtection" cssClass="error"/>
-            <br>
-            Akcesoria: <form:input path="accessories"/>
-            <form:errors path="accessories" cssClass="error"/>
-            <br>
+            <div class="form-group">
+                <div class="row align-items-center">
+                    <div class="col">Ochrona wyświetlacza (OW)</div>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="displayProtection"/>
+                    <form:errors path="displayProtection" cssClass="error"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row align-items-center">
+                    <div class="col">Akcesoria</div>
+                    <form:input type="number" min="0" max="100" class="col-4 form-control" path="accessories"/>
+                    <form:errors path="accessories" cssClass="error"/>
+                </div>
+            </div>
 
             <button class="btn btn-secondary btn-sm" type="submit">Raportuj</button>
 

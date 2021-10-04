@@ -33,8 +33,8 @@ public class ReportMeServiceImp implements ReportMeService{
 
     public void add(ReportDto reportDto) {
         Report newRepost = new Report();
-        Long shopId = 1L;
-        Long userId = 1L;
+//        Long shopId = 1L;
+//        Long userId = 1L;
         newRepost.setContract(reportDto.getContract());
         newRepost.setAnnex(reportDto.getAnnex());
         newRepost.setBusinessToBusiness(reportDto.getBusinessToBusiness());
@@ -45,8 +45,8 @@ public class ReportMeServiceImp implements ReportMeService{
         newRepost.setTeleSales(reportDto.getTeleSales());
         newRepost.setDisplayProtection(reportDto.getDisplayProtection());
         newRepost.setAccessories(reportDto.getAccessories());
-        newRepost.setUser(userRepository.findById(userId).orElseThrow(EntityNotFoundException::new));
-        newRepost.setShop(shopRepository.findById(shopId).orElseThrow(EntityNotFoundException::new));
+        newRepost.setUser(userRepository.findByEmail(reportDto.getUser()));
+        newRepost.setShop(userRepository.findByEmail(reportDto.getUser()).getShop());
         reportRepository.save(newRepost);
     }
 
